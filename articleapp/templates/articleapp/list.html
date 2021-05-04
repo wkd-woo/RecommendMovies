@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .container div {
+      width: 200px;
+      background-color: antiquewhite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1rem;
+    }
+
+    .container img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+
+</style>
+{% if article_list %}
+<div class="container">
+    {% for article in article_list %}
+    <a href="{% url 'articleapp:detail' pk=article.pk %}">
+        {% include 'snippets/card.html' with article=article %}
+    </a>
+    {% endfor %}
+</div>
+<script src="{% static 'js/magicgrid.js' %}"></script>
+{% else %}
+<div style="text-align:center">
+    <h1>No Article YET!</h1>
+</div>
+{% endif %}
+
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+<div style="text-align:center">
+    <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-3 btn mt-3 mb-3">
+        Create Article
+    </a>
+</div>
+
+
+{% endblock %}

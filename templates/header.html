@@ -1,0 +1,28 @@
+<div class="jealous_header">
+    <div>
+        <h1 class="jealous_logo">Jealous</h1>
+    </div>
+    <div>
+
+        <a href="{% url 'articleapp:list' %}">
+            <span>Articles</span>
+        </a>
+        <span>nav2</span>
+        <span>nav3</span>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
+            <span>login</span>
+        </a>
+        <a href="{% url 'accountapp:create' %}?next={{ request.path }}">
+            <span>SignUp</span>
+        </a>
+        {% else %}
+        <a href="{% url 'accountapp:detail' pk=user.pk %}">
+            <span>MyPage</span>
+        </a>
+        <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
+            <span>logout</span>
+        </a>
+        {% endif %}
+    </div>
+</div>

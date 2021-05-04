@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+        .testing {
+            background-color : white;
+            height: 3rem;
+            width: 3rem;
+            margin: 1rem;
+        }
+
+
+
+
+
+</style>
+
+<div style="border-radius: 1rem; margin: 2rem; text-align: center">
+    <h1 style="font-family: 'Yanone Kaffeesatz', sans-serif;">
+        Hello World LIST!
+    </h1>
+
+    <form action="/account/hello_world/" method="post">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="hello_world_input">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="POST">
+        </div>
+
+    </form>
+    `
+    {% if hello_world_list %}
+    {% for hello_world in hello_world_list %}
+
+    <h4>
+        {{ hello_world.text }}
+    </h4>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
