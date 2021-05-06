@@ -4,10 +4,16 @@
     <div class="call-to-action">
         <h1 class="title">Recommend<br>Movie</h1>
         <span class="subtitle">based on preference</span>
+        {% if user.is_authenticated %}
+        <!-- 평가 페이지로 이동 아직 url x-->
+        <a href="" class="btn">Go!</a>
+        {% else %}
         <a href="{% url 'accountapp:login' %}" class="btn">Log In</a>
         <span class="subtitle-2">Don't have an account?
             <a href="{% url 'accountapp:create' %}" class="btn-2">Join Now</a>
         </span>
+        {% endif %}
+
     </div>
 </section>
 <div class="home-page-circle-1"></div>
