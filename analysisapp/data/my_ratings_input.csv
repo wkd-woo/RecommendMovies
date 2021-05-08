@@ -1,0 +1,249 @@
+,userId,movieId,rating,timestamp,title,genres
+0,1000,91529,5,2021-03-29 22:48,"Dark Knight Rises, The (2012)",Action|Adventure|Crime|IMAX
+1,1000,79132,5,2021-03-29 22:48,Inception (2010),Action|Crime|Drama|Mystery|Sci-Fi|Thriller|IMAX
+2,1000,123,5,2021-03-29 22:48,Chungking Express (Chung Hing sam lam) (1994),Drama|Mystery|Romance
+3,1000,8638,4.5,2021-03-29 22:48,Before Sunset (2004),Drama|Romance
+4,1000,4226,4.5,2021-03-29 22:51,Memento (2000),Mystery|Thriller
+5,1000,164909,4.5,2021-03-29 22:51,La La Land (2016),Comedy|Drama|Romance
+6,1000,356,4.5,2021-03-29 22:51,Forrest Gump (1994),Comedy|Drama|Romance|War
+7,1000,1172,4.5,2021-03-29 22:51,Cinema Paradiso (Nuovo cinema Paradiso) (1989),Drama
+8,1000,1968,4.5,2021-03-29 22:52,"Breakfast Club, The (1985)",Comedy|Drama
+9,1000,916,4,2021-03-29 22:53,Roman Holiday (1953),Comedy|Drama|Romance
+10,1000,1955,4,2021-03-29 22:54,Kramer vs. Kramer (1979),Drama
+11,1000,215,4,2021-03-29 22:55,Before Sunrise (1995),Drama|Romance
+12,1000,86882,4,2021-03-29 22:56,Midnight in Paris (2011),Comedy|Fantasy|Romance
+13,1000,104841,4,2021-03-29 22:57,Gravity (2013),Action|Sci-Fi|IMAX
+14,1000,7361,4,2021-03-29 22:57,Eternal Sunshine of the Spotless Mind (2004),Drama|Romance|Sci-Fi
+15,1000,2671,4,2021-03-29 22:59,Notting Hill (1999),Comedy|Romance
+16,1000,110102,4,2021-03-29 22:48,Captain America: The Winter Soldier (2014),Action|Adventure|Sci-Fi|IMAX
+17,1000,106920,4,2021-03-29 22:48,Her (2013),Drama|Romance|Sci-Fi
+18,1000,109487,4,2021-03-29 22:48,Interstellar (2014),Sci-Fi|IMAX
+19,1000,89745,3.5,2021-03-29 22:48,"Avengers, The (2012)",Action|Adventure|Sci-Fi|IMAX
+20,1000,1307,3.5,2021-03-29 22:48,When Harry Met Sally... (1989),Comedy|Romance
+21,1000,5673,3.5,2021-03-29 22:51,Punch-Drunk Love (2002),Comedy|Drama|Romance
+22,1000,112552,3.5,2021-03-29 22:51,Whiplash (2014),Drama
+23,1000,5989,3.5,2021-03-29 22:51,Catch Me If You Can (2002),Crime|Drama
+24,1000,122912,3.5,2021-03-29 22:51,Avengers: Infinity War - Part I (2018),Action|Adventure|Sci-Fi
+25,1000,122906,3.5,2021-03-29 22:52,Black Panther (2017),Action|Adventure|Sci-Fi
+26,1000,8529,3.5,2021-03-29 22:53,"Terminal, The (2004)",Comedy|Drama|Romance
+27,1000,97938,3.5,2021-03-29 22:54,Life of Pi (2012),Adventure|Drama|IMAX
+28,1000,134130,3.5,2021-03-29 22:55,The Martian (2015),Adventure|Drama|Sci-Fi
+29,1000,122920,3.5,2021-03-29 22:56,Captain America: Civil War (2016),Action|Sci-Fi|Thriller
+30,1000,597,3.5,2021-03-29 22:57,Pretty Woman (1990),Comedy|Romance
+31,1000,89492,3.5,2021-03-29 22:57,Moneyball (2011),Drama
+32,1000,104374,3.5,2021-03-29 22:59,About Time (2013),Drama|Fantasy|Romance
+33,1000,102407,3,2021-03-29 22:48,"Great Gatsby, The (2013)",Drama
+34,1000,45720,3,2021-03-29 22:48,"Devil Wears Prada, The (2006)",Comedy|Drama
+35,1000,5418,3,2021-03-29 22:48,"Bourne Identity, The (2002)",Action|Mystery|Thriller
+36,1000,8984,3,2021-03-29 22:48,Ocean's Twelve (2004),Action|Comedy|Crime|Thriller
+37,1000,111,3,2021-03-29 22:48,Taxi Driver (1976),Crime|Drama|Thriller
+38,1000,2572,3,2021-03-29 22:51,10 Things I Hate About You (1999),Comedy|Romance
+39,1000,1,3,2021-03-29 22:51,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+40,1000,1580,3,2021-03-29 22:51,Men in Black (a.k.a. MIB) (1997),Action|Comedy|Sci-Fi
+41,1000,586,3,2021-03-29 22:51,Home Alone (1990),Children|Comedy
+42,1000,66198,3,2021-03-29 22:52,"International, The (2009)",Drama|Thriller
+43,1000,77561,3,2021-03-29 22:53,Iron Man 2 (2010),Action|Adventure|Sci-Fi|Thriller|IMAX
+44,1000,59315,3,2021-03-29 22:54,Iron Man (2008),Action|Adventure|Sci-Fi
+45,1000,63082,3,2021-03-29 22:55,Slumdog Millionaire (2008),Crime|Drama|Romance
+46,1000,69844,3,2021-03-29 22:56,Harry Potter and the Half-Blood Prince (2009),Adventure|Fantasy|Mystery|Romance|IMAX
+47,1000,81834,3,2021-03-29 22:57,Harry Potter and the Deathly Hallows: Part 1 (2010),Action|Adventure|Fantasy|IMAX
+48,1000,4896,3,2021-03-29 22:57,Harry Potter and the Sorcerer's Stone (a.k.a. Harry Potter and the Philosopher's Stone) (2001),Adventure|Children|Fantasy
+49,1000,5816,3,2021-03-29 22:59,Harry Potter and the Chamber of Secrets (2002),Adventure|Fantasy
+50,1000,4018,2.5,2021-03-29 22:48,What Women Want (2000),Comedy|Romance
+51,1000,111759,3.5,2021-03-29 22:48,Edge of Tomorrow (2014),Action|Sci-Fi|IMAX
+52,1000,51084,2.5,2021-03-29 22:48,Music and Lyrics (2007),Comedy|Romance
+53,1000,44195,2.5,2021-03-29 22:48,Thank You for Smoking (2006),Comedy|Drama
+54,1000,3481,2.5,2021-03-29 22:48,High Fidelity (2000),Comedy|Drama|Romance
+55,1000,5349,2.5,2021-03-29 22:51,Spider-Man (2002),Action|Adventure|Sci-Fi|Thriller
+56,1000,41569,2.5,2021-03-29 22:51,King Kong (2005),Action|Adventure|Drama|Fantasy|Thriller
+57,1000,55872,2.5,2021-03-29 22:51,August Rush (2007),Drama|Musical
+58,1000,539,2.5,2021-03-29 22:51,Sleepless in Seattle (1993),Comedy|Drama|Romance
+59,1000,2,2.5,2021-03-29 22:52,Jumanji (1995),Adventure|Children|Fantasy
+60,1000,86332,2.5,2021-03-29 22:53,Thor (2011),Action|Adventure|Drama|Fantasy|IMAX
+61,1000,102903,2.5,2021-03-29 22:54,Now You See Me (2013),Crime|Mystery|Thriller
+62,1000,114180,2.5,2021-03-29 22:55,"Maze Runner, The (2014)",Action|Mystery|Sci-Fi
+63,1000,135567,2.5,2021-03-29 22:56,Independence Day: Resurgence (2016),Action|Adventure|Sci-Fi
+64,1000,6863,2.5,2021-03-29 22:57,School of Rock (2003),Comedy|Musical
+65,1000,103539,2.5,2021-03-29 22:57,The Spectacular Now (2013),Comedy|Drama|Romance
+66,1000,104863,2,2021-03-29 22:59,What If (2013),Comedy|Drama|Romance
+67,1000,117895,2,2021-03-29 22:59,Maze Runner: Scorch Trials (2015),Action|Thriller
+68,1000,183635,2,2021-03-29 22:48,Maze Runner: The Death Cure (2018),Action|Mystery|Sci-Fi|Thriller
+69,1000,82461,2,2021-03-29 22:48,Tron: Legacy (2010),Action|Adventure|Sci-Fi|IMAX
+70,1000,38388,2,2021-03-29 22:48,Goal! The Dream Begins (Goal!) (2005),Drama
+71,1000,59333,1.5,2021-03-29 22:48,Made of Honor (2008),Comedy|Romance
+72,1000,53953,1.5,2021-03-29 22:48,1408 (2007),Drama|Horror|Thriller
+73,1000,122898,1.5,2021-03-29 22:51,Justice League (2017),Action|Adventure|Sci-Fi
+74,1000,51077,1,2021-03-29 22:51,Ghost Rider (2007),Action|Fantasy|Thriller
+75,1000,159093,1,2021-03-29 22:51,Now You See Me 2 (2016),Action|Comedy|Thriller
+76,1001,166568,5,2021-04-12 22:51,Miss Sloane (2016),Thriller
+77,1001,134130,5,2021-04-12 22:51,The Martian (2015),Adventure|Drama|Sci-Fi
+78,1001,122904,5,2021-04-12 22:51,Deadpool (2016),Action|Adventure|Comedy|Sci-Fi
+79,1001,187593,5,2021-04-12 22:51,Deadpool 2 (2018),Action|Comedy|Sci-Fi
+80,1001,112852,5,2021-04-12 22:51,Guardians of the Galaxy (2014),Action|Adventure|Sci-Fi
+81,1001,104841,4.5,2021-04-12 22:51,Gravity (2013),Action|Sci-Fi|IMAX
+82,1001,109487,4.5,2021-04-12 22:50,Interstellar (2014),Sci-Fi|IMAX
+83,1001,80222,4.5,2021-04-12 22:50,Step Up 3D (2010),Drama|Romance
+84,1001,116742,4.5,2021-04-13 22:45,Secret (2007),Drama|Fantasy|Romance
+85,1001,111622,4.5,2021-04-13 22:45,Begin Again (2013),Comedy|Romance
+86,1001,164909,4,2021-04-13 22:45,La La Land (2016),Comedy|Drama|Romance
+87,1001,104374,4,2021-04-13 22:45,About Time (2013),Drama|Fantasy|Romance
+88,1001,167140,4,2021-04-13 22:45,At Cafe 6 (2016),Comedy|Romance
+89,1001,47382,4,2021-04-13 22:45,Step Up (2006),Drama|Romance
+90,1001,58107,4,2021-04-13 23:00,Step Up 2 the Streets (2008),Drama|Musical|Romance
+91,1001,98373,4,2021-04-13 23:00,Step Up Revolution (2012),Musical
+92,1001,122906,4,2021-04-13 23:00,Black Panther (2017),Action|Adventure|Sci-Fi
+93,1001,122918,4,2021-04-13 23:00,Guardians of the Galaxy 2 (2017),Action|Adventure|Sci-Fi
+94,1001,96588,4,2021-04-13 23:00,Pitch Perfect (2012),Comedy|Musical
+95,1001,133419,4,2021-04-13 23:00,Pitch Perfect 2 (2015),Comedy
+96,1001,116797,4,2021-04-13 23:04,The Imitation Game (2014),Drama|Thriller|War
+97,1001,103439,4,2021-04-13 23:04,"Thieves, The (Dodookdeul) (2012)",Action|Crime
+98,1001,141538,4,2021-04-13 23:04,Assassination (2015),Action|Drama|Thriller
+99,1001,102903,3.5,2021-04-13 23:04,Now You See Me (2013),Crime|Mystery|Thriller
+100,1001,55872,3.5,2021-04-13 23:25,August Rush (2007),Drama|Musical
+101,1001,77561,3.5,2021-04-13 23:25,Iron Man 2 (2010),Action|Adventure|Sci-Fi|Thriller|IMAX
+102,1001,113103,3.5,2021-04-13 23:25,Step Up All In (2014),Drama|Musical|Romance
+103,1001,122900,3.5,2021-04-13 23:25,Ant-Man (2015),Action|Adventure|Sci-Fi
+104,1001,85056,3.5,2021-04-14 16:25,I Am Number Four (2011),Action|Sci-Fi|Thriller|IMAX
+105,1001,90405,3.5,2021-04-14 16:25,In Time (2011),Crime|Sci-Fi|Thriller
+106,1001,159093,3,2021-04-13 23:25,Now You See Me 2 (2016),Action|Comedy|Thriller
+107,1001,59315,3,2021-04-14 11:25,Iron Man (2008),Action|Adventure|Sci-Fi
+108,1001,26743,3,2021-04-14 11:25,Only Yesterday (Omohide poro poro) (1991),Animation|Drama
+109,1001,187613,3,2021-04-14 11:25,The Kissing Booth (2018),Comedy|Romance
+110,1001,80549,3,2021-04-14 11:25,Easy A (2010),Comedy|Romance
+111,1001,100060,3,2021-04-14 16:25,Sunny (Sseo-ni) (2011),Drama
+112,1001,141536,3,2021-04-14 16:25,Veteran (2015),Crime|Thriller
+113,1001,189461,3,2021-04-14 16:26,Midnight Runners (2017),Action|Comedy
+114,1001,144532,3,2021-04-14 16:26,Cold Eyes (2013),Action|Crime
+115,1001,142210,3,2021-04-14 16:26,The Beauty Inside (2015),Fantasy|Romance
+116,1001,166167,3,2021-04-14 16:26,Love 911 (2012),Comedy|Drama|Romance
+117,1001,144348,3,2021-04-14 16:26,The Tower (2012),Action|Drama
+118,1001,102407,2,2021-04-14 11:25,"Great Gatsby, The (2013)",Drama
+119,1001,140245,2,2021-04-14 16:26,Twenty (2015),Comedy|Drama
+120,1001,184869,1,2021-04-14 16:26,Golden Slumber (2018),Drama|Thriller
+121,1001,4896,2,2021-04-14 16:26,Harry Potter and the Sorcerer's Stone (a.k.a. Harry Potter and the Philosopher's Stone) (2001),Adventure|Children|Fantasy
+122,1001,5816,2.5,2021-04-14 16:26,Harry Potter and the Chamber of Secrets (2002),Adventure|Fantasy
+123,1001,8368,2,2021-04-14 16:26,Harry Potter and the Prisoner of Azkaban (2004),Adventure|Fantasy|IMAX
+,1002,6383,4,2021-04-14 16:25,"2 Fast 2 Furious (Fast and the Furious 2, The) (2003)",Action|Crime|Thriller
+,1002,46335,4.5,2021-04-14 16:26,"Fast and the Furious: Tokyo Drift, The (Fast and the Furious 3, The) (2006)",Action|Crime|Drama|Thriller
+,1002,67923,4,2021-04-14 16:26,"Fast & Furious (Fast and the Furious 4, The) (2009)",Action|Crime|Drama|Thriller
+,1002,86644,4,2021-04-14 16:26,"Fast Five (Fast and the Furious 5, The) (2011)",Action|Crime|Drama|Thriller|IMAX
+,1002,102716,5,2021-04-14 16:26,"Fast & Furious 6 (Fast and the Furious 6, The) (2013)",Action|Crime|Thriller|IMAX
+,1002,115149,4,2021-04-14 16:26,John Wick (2014),Action|Thriller
+,1002,168248,5,2021-04-14 11:25,John Wick: Chapter Two (2017),Action|Crime|Thriller
+,1002,162322,4,2021-04-14 16:26,Mechanic: Resurrection (2016),Action|Crime|Thriller
+,1002,166461,4,2021-04-14 16:26,Moana (2016),Adventure|Animation|Children|Comedy|Fantasy
+,1002,177765,4.5,2021-04-14 16:26,Coco (2017),Adventure|Animation|Children
+,1002,53972,4,2021-04-14 16:26,Live Free or Die Hard (2007),Action|Adventure|Crime|Thriller
+,1002,100498,3.5,2021-04-14 16:26,"Good Day to Die Hard, A (2013)",Action|Crime|Thriller|IMAX
+,1002,187479,3,2021-04-14 16:25,Steel Rain (2017),Action|Drama
+,1002,189897,3,2021-04-14 16:26,Martian Land (2015),Action|Adventure|Horror|Sci-Fi
+,1002,68358,3,2021-04-14 16:26,Star Trek (2009),Action|Adventure|Sci-Fi|IMAX
+,1002,102445,3.5,2021-04-14 16:26,Star Trek Into Darkness (2013),Action|Adventure|Sci-Fi|IMAX
+,1002,135569,3,2021-04-14 16:26,Star Trek Beyond (2016),Action|Adventure|Sci-Fi
+,1002,53996,3.5,2021-04-14 16:26,Transformers (2007),Action|Sci-Fi|Thriller|IMAX
+,1002,69526,3,2021-04-14 11:25,Transformers: Revenge of the Fallen (2009),Action|Adventure|Sci-Fi|IMAX
+,1002,87520,2.5,2021-04-14 16:26,Transformers: Dark of the Moon (2011),Action|Adventure|Sci-Fi|War|IMAX
+,1002,112370,2.5,2021-04-12 22:51,Transformers: Age of Extinction (2014),Action|Adventure|Sci-Fi
+,1002,174585,3,2021-04-12 22:51,Transformers: The Last Knight (2017),Action|Adventure|Sci-Fi|Thriller
+,1002,122904,2.5,2021-04-12 22:51,Deadpool (2016),Action|Adventure|Comedy|Sci-Fi
+,1002,187593,2,2021-04-12 22:50,Deadpool 2 (2018),Action|Comedy|Sci-Fi
+,1002,168254,2,2021-04-12 22:50,Kong: Skull Island (2017),Action|Adventure|Fantasy
+,1002,141688,2,2021-04-13 22:45,Legend (2015),Crime|Thriller
+,1002,,,,,
+,1002,,,,,
+,1002,,,,,
+,1002,,,,,
+,1002,,,,,
+,1002,,,,,
+,1002,,,,,
+,1002,,,,,
+,,,,,,
+,,,,,,
+,1003,27773,5,2021-04-14 16:26,Old Boy (2003),Mystery|Thriller
+,1003,97938,5,2021-04-14 16:26,Life of Pi (2012),Adventure|Drama|IMAX
+,1003,112552,5,2021-04-14 16:26,Whiplash (2014),Drama
+,1003,296,5,2021-04-14 16:25,Pulp Fiction (1994),Comedy|Crime|Drama|Thriller
+,1003,148626,5,2021-04-14 16:26,"Big Short, The (2015)",Drama
+,1003,172591,5,2021-04-14 16:26,The Godfather Trilogy: 1972-1990 (1992),(no genres listed)
+,1003,156944,5,2021-04-14 16:26,Land of Mine (2015),War
+,1003,318,5,2021-04-14 16:25,"Shawshank Redemption, The (1994)",Crime|Drama
+,1003,111,4.5,2021-04-14 16:26,Taxi Driver (1976),Crime|Drama|Thriller
+,1003,1682,4.5,2021-04-14 16:26,"Truman Show, The (1998)",Comedy|Drama|Sci-Fi
+,1003,4896,4.5,2021-04-14 16:26,Harry Potter and the Sorcerer's Stone (a.k.a. Harry Potter and the Philosopher's Stone) (2001),Adventure|Children|Fantasy
+,1003,5816,4,2021-04-14 16:26,Harry Potter and the Chamber of Secrets (2002),Adventure|Fantasy
+,1003,8368,2,2021-04-14 16:26,Harry Potter and the Prisoner of Azkaban (2004),Adventure|Fantasy|IMAX
+,1003,3535,4.5,2021-04-14 16:26,American Psycho (2000),Crime|Horror|Mystery|Thriller
+,1003,2329,4.5,2021-04-14 16:27,American History X (1998),Crime|Drama
+,1003,55765,4.5,2021-04-14 16:27,American Gangster (2007),Crime|Drama|Thriller
+,1003,1089,4.5,2021-04-14 16:27,Reservoir Dogs (1992),Crime|Mystery|Thriller
+,1003,99114,4.5,2021-04-14 16:27,Django Unchained (2012),Action|Drama|Western
+,1003,16,4.5,2021-04-14 16:27,Casino (1995),Crime|Drama
+,1003,1213,4.5,2021-04-14 16:27,Goodfellas (1990),Crime|Drama
+,1003,112183,4.5,2021-04-14 16:27,Birdman: Or (The Unexpected Virtue of Ignorance) (2014),Comedy|Drama
+,1003,68157,4.5,2021-04-14 16:31,Inglourious Basterds (2009),Action|Drama|War
+,1003,31696,4,2021-04-14 16:31,Constantine (2005),Action|Fantasy|Horror|Thriller
+,1003,162414,4,2021-04-14 16:31,Moonlight,Drama
+,1003,364,4,2021-04-14 16:31,"Lion King, The (1994)",Adventure|Animation|Children|Drama|Musical|IMAX
+,1003,2571,4,2021-04-14 16:31,"Matrix, The (1999)",Action|Sci-Fi|Thriller
+,1003,1214,4,2021-04-14 16:31,Alien (1979),Horror|Sci-Fi
+,1003,51540,4,2021-04-14 16:31,Zodiac (2007),Crime|Drama|Thriller
+,1003,109374,4,2021-04-14 16:31,"Grand Budapest Hotel, The (2014)",Comedy|Drama
+,1003,7147,4,2021-04-14 17:01,Big Fish (2003),Drama|Fantasy|Romance
+,1003,74458,4,2021-04-14 16:31,Shutter Island (2010),Drama|Mystery|Thriller
+,1003,177765,4,2021-04-14 16:31,Coco (2017),Adventure|Animation|Children
+,1003,1270,4,2021-04-14 17:01,Back to the Future (1985),Adventure|Comedy|Sci-Fi
+,1003,122904,4,2021-04-14 17:01,Deadpool (2016),Action|Adventure|Comedy|Sci-Fi
+,1003,119145,4,2021-04-14 17:01,Kingsman: The Secret Service (2015),Action|Adventure|Comedy|Crime
+,1003,59315,4,2021-04-14 17:01,Iron Man (2008),Action|Adventure|Sci-Fi
+,1003,55820,4,2021-04-14 17:01,No Country for Old Men (2007),Crime|Drama
+,1003,152081,4,2021-04-14 17:01,Zootopia (2016),Action|Adventure|Animation|Children|Comedy
+,1003,168248,4,2021-04-14 17:01,John Wick: Chapter Two (2017),Action|Crime|Thriller
+,1003,2194,4,2021-04-14 17:01,"Untouchables, The (1987)",Action|Crime|Drama
+,1003,2997,3.5,2021-04-14 17:01,Being John Malkovich (1999),Comedy|Drama|Fantasy
+,1003,90430,3.5,2021-04-14 17:01,Carnage (2011),Comedy|Drama
+,1003,122470,3.5,2021-04-14 17:01,Inside Out (2011),Crime|Drama
+,1003,2011,3.5,2021-04-14 17:01,Back to the Future Part II (1989),Adventure|Comedy|Sci-Fi
+,1003,1,3.5,2021-04-14 17:01,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+,1003,80463,3.5,2021-04-14 17:01,"Social Network, The (2010)",Drama
+,1003,110102,3.5,2021-04-14 17:01,Captain America: The Winter Soldier (2014),Action|Adventure|Sci-Fi|IMAX
+,1003,4262,3.5,2021-04-14 17:01,Scarface (1983),Action|Crime|Drama
+,1003,7361,3.5,2021-04-14 17:01,Eternal Sunshine of the Spotless Mind (2004),Drama|Romance|Sci-Fi
+,1003,33794,3.5,2021-04-14 17:01,Batman Begins (2005),Action|Crime|IMAX
+,1003,50,3.5,2021-04-14 17:01,"Usual Suspects, The (1995)",Crime|Mystery|Thriller
+,1003,55908,3.5,2021-04-14 17:01,"Man from Earth, The (2007)",Drama|Sci-Fi
+,1003,88140,3.5,2021-04-14 17:01,Captain America: The First Avenger (2011),Action|Adventure|Sci-Fi|Thriller|War
+,1003,122922,3.5,2021-04-14 17:01,Doctor Strange (2016),Action|Adventure|Sci-Fi
+,1003,164314,3.5,2021-04-14 17:01,Catch Me If You Can (1989),Action|Comedy|Drama
+,1003,2594,3,2021-04-14 17:01,Open Your Eyes (Abre los ojos) (1997),Drama|Romance|Sci-Fi|Thriller
+,1003,81845,3,2021-04-14 17:01,"King's Speech, The (2010)",Drama
+,1003,1092,3,2021-04-14 17:01,Basic Instinct (1992),Crime|Mystery|Thriller
+,1003,1573,3,2021-04-14 17:01,Face/Off (1997),Action|Crime|Drama|Thriller
+,1003,103439,3,2021-04-14 17:01,"Thieves, The (Dodookdeul) (2012)",Action|Crime
+,1003,44191,3,2021-04-14 17:01,V for Vendetta (2006),Action|Sci-Fi|Thriller|IMAX
+,1003,102125,3,2021-04-14 17:03,Iron Man 3 (2013),Action|Sci-Fi|Thriller|IMAX
+,1003,77561,3,2021-04-14 17:03,Iron Man 2 (2010),Action|Adventure|Sci-Fi|Thriller|IMAX
+,1003,122900,3,2021-04-14 17:03,Ant-Man (2015),Action|Adventure|Sci-Fi
+,1003,44199,3,2021-04-14 17:03,Inside Man (2006),Crime|Drama|Thriller
+,1003,133771,3,2021-04-14 17:03,The Lobster (2015),Comedy|Romance|Sci-Fi
+,1003,144482,3,2021-04-14 17:03,Circle (2015),Drama|Horror|Sci-Fi
+,1003,111622,3,2021-04-14 17:03,Begin Again (2013),Comedy|Romance
+,1003,1274,3,2021-04-14 17:06,Akira (1988),Action|Adventure|Animation|Sci-Fi
+,1003,92420,3,2021-04-14 17:06,Chronicle (2012),Action|Sci-Fi|Thriller
+,1003,1265,2.5,2021-04-14 17:06,Groundhog Day (1993),Comedy|Fantasy|Romance
+,1003,89745,2.5,2021-04-14 17:06,"Avengers, The (2012)",Action|Adventure|Sci-Fi|IMAX
+,1003,122892,2.5,2021-04-14 17:06,Avengers: Age of Ultron (2015),
+,1003,32587,2.5,2021-04-14 17:06,Sin City (2005),Action|Crime|Film-Noir|Mystery|Thriller
+,1003,492,2.5,2021-04-14 17:06,Manhattan Murder Mystery (1993),Comedy|Mystery
+,1003,48997,2.5,2021-04-14 17:06,Perfume: The Story of a Murderer (2006),Crime|Drama|Thriller
+,1003,46972,2.5,2021-04-14 17:06,Night at the Museum (2006),Action|Comedy|Fantasy|IMAX
+,1003,94777,2.5,2021-04-14 17:12,Men in Black III (M.III.B.) (M.I.B.쨀) (2012),Action|Comedy|Sci-Fi|IMAX
+,1003,168254,2.5,2021-04-14 17:12,Kong: Skull Island (2017),Action|Adventure|Fantasy
+,1003,88125,2.5,2021-04-14 17:12,Harry Potter and the Deathly Hallows: Part 2 (2011),Action|Adventure|Drama|Fantasy|Mystery|IMAX
+,1003,2167,2.5,2021-04-14 17:12,Blade (1998),Action|Horror|Thriller
+,1003,86332,2,2021-04-14 17:12,Thor (2011),Action|Adventure|Drama|Fantasy|IMAX
+,1003,5459,2,2021-04-14 17:12,Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2) (2002),Action|Comedy|Sci-Fi
+,1003,179401,2,2021-04-14 17:14,Jumanji: Welcome to the Jungle (2017),Action|Adventure|Children
+,1003,176101,2,2021-04-14 17:12,Kingsman: The Golden Circle (2017),Action|Adventure|Comedy
+,1003,54001,2,2021-04-14 17:14,Harry Potter and the Order of the Phoenix (2007),Adventure|Drama|Fantasy|IMAX
+,1003,135143,2,2021-04-14 17:14,Fantastic Beasts and Where to Find Them (2016),Fantasy
+,1003,135536,1,2021-04-14 17:14,Suicide Squad (2016),Action|Crime|Sci-Fi

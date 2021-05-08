@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'accountapp',
     'articleapp',
     'profileapp',
+    'analysisapp',
     'rmapp',
     'bootstrap4',
 ]
@@ -94,6 +95,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'movie_db': {
+        'NAME':'movie_data',
+        'ENGINE':''
     }
 }
 
@@ -143,3 +148,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# 로그인/로그아웃 성공 시 이동할 페이지 등록
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+MODEL_ROOT = os.path.join(BASE_DIR, 'models') # 학습 모델들을 저장할 디렉토리
