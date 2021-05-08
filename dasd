@@ -1,0 +1,79 @@
+[33mcommit 93d8cd0e39b4cb27107e3e731d71480325eb6e18[m[33m ([m[1;36mHEAD -> [m[1;32mnogitignore[m[33m)[m
+Author: wkd-woo <wkdwoos@gmail.com>
+Date:   Sat May 8 12:31:02 2021 +0900
+
+    account 망함
+
+[33mcommit 351e6151ea03978b18a223d9e8b2dc124e0036e1[m
+Author: thayoon <83504880+thayoon@users.noreply.github.com>
+Date:   Fri May 7 00:24:14 2021 +0900
+
+    redirect_v1
+    
+    로고: home으로 리다이렉트
+    로그인: home으로 리다이렉트 ->
+    home.html의 템플릿 변경
+    RecommendMovie/settings.py에 로그인/로그아웃 성공 후 이동하는 URL 추가
+
+[33mcommit 93d78438a9f391b56c1d44c7f727f905c07222b5[m
+Author: wkd-woo <wkdwoos@gmail.com>
+Date:   Wed May 5 17:59:36 2021 +0900
+
+    st changed
+
+[33mcommit 2576006ead0b0e97df51a86ed0d383f708776217[m
+Author: wkd-woo <wkdwoos@gmail.com>
+Date:   Wed May 5 17:49:11 2021 +0900
+
+    copyright add
+
+[33mcommit a6f4844725ce08c2dd0ce053b3775764d31eb543[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Wed May 5 17:23:57 2021 +0900
+
+    CSS applicated v commit
+
+[33mcommit d4ddd3f5bccf6bec232981005d887b7f6d84021f[m
+Author: thayoon <83504880+thayoon@users.noreply.github.com>
+Date:   Wed May 5 16:11:14 2021 +0900
+
+    rmapp 수정
+    
+    recommendmovie(setting, url, ... 수정)
+    rmapp 생성 및 템플릿/정적 파일 수정
+
+[33mcommit 05728d825f285cd70885acf1358a107b4d8c507d[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Tue May 4 23:39:17 2021 +0900
+
+     no .gitignore
+
+[33mcommit 472e696b2a405b4fa37350174eafdc07c10c29b5[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Tue May 4 22:20:06 2021 +0900
+
+    css is not working 8_8
+
+[33mcommit d7bfd3be12b30b63484b330ce07b7db8045e2c93[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Tue May 4 21:59:59 2021 +0900
+
+    interconnecting now... ;-(
+
+[33mcommit d242dbdf3f12ced072853a15c98724096ff09a63[m[33m ([m[1;31morigin/Editing[m[33m, [m[1;32mEditing[m[33m)[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Tue May 4 20:09:22 2021 +0900
+
+    RM basic set
+
+[33mcommit 54a93ec3f48d6396d144b62fd9a25aca23ea2f2b[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Tue May 4 19:27:34 2021 +0900
+
+    RM account articles set commit
+
+[33mcommit b893fc43a149a74f9adf283445f4eea0d72f816a[m
+Author: wkd-woo <wkdwoo@gmail.com>
+Date:   Tue May 4 18:06:29 2021 +0900
+
+    RM env set commit
