@@ -21,7 +21,7 @@ from django.urls import path, include
 from rmapp import views
 
 urlpatterns = [
-    path('', views.home, name='home'),  # '/'에 해당되는 path
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accountapp.urls')),
     path('profiles/', include('profileapp.urls')),
