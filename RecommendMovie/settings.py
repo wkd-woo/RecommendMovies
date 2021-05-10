@@ -14,8 +14,6 @@ from pathlib import Path
 
 import os, environ
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,7 +36,6 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -87,21 +84,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'RecommendMovie.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
-    'default': {
+    'default': {  # 기본 db (user 정보 등)
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'movie_db': {
-        'NAME':'movie_data',
-        'ENGINE':''
+    'genome_db': {  # genome-score db
+        'ENGINE': 'django.db.backends.mysql', # 사용 엔진 , mysql
+        'NAME': 'genome_data', # 연동할 mysql DB 이름
+        'USER': 'root', # DB 접속 계정명
+        'PASSWORD': '1234', # 해당 DB 접속 계정 비밀번호
+        'HOST': 'localhost', # 실제 DB 주소
+        'PORT': '3006', # 포트번호
+    },
+    'rating_db': {  # 평점 db
+        'ENGINE': 'django.db.backends.mysql', # 사용 엔진 , mysql
+        'NAME': 'rating_data', # 연동할 mysql DB 이름
+        'USER': 'root', # DB 접속 계정명
+        'PASSWORD': '1234', # 해당 DB 접속 계정 비밀번호
+        'HOST': 'localhost', # 실제 DB 주소
+        'PORT': '3006', # 포트번호
     }
-}
 
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -121,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -135,12 +141,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -149,10 +153,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # 로그인/로그아웃 성공 시 이동할 페이지 등록
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-
-MODEL_ROOT = os.path.join(BASE_DIR, 'models') # 학습 모델들을 저장할 디렉토리
+MODEL_ROOT = os.path.join(BASE_DIR, 'models')  # 학습 모델들을 저장할 디렉토리

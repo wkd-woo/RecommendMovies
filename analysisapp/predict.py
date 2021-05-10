@@ -5,17 +5,17 @@ import seaborn as sns
 from sklearn.linear_model import Lasso
 import pickle
 import os
+import warnings
 
 currentpath = os.getcwd()
-print(currentpath)
-
-import warnings
 warnings.filterwarnings('ignore')
 
+rating_path = 'analysisapp/data/ratings.csv'
 my_rating_path = 'analysisapp/data/my_ratings_input.csv'
 movie_path = 'analysisapp/data/movies.csv'
 genre_path = 'analysisapp/data/genres.p'
 
+ratings = pd.read_csv(rating_path)
 my_ratings = pd.read_csv(my_rating_path)
 movies = pd.read_csv(movie_path)
 genres = pd.read_pickle(genre_path)
