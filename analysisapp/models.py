@@ -8,6 +8,9 @@ class ratings(models.Model): # 평점 모델.
     rating = models.FloatField() # 평점
     movie_id = models.ForeignKey() # DB에 있는 movies 연동. foreignKey
 
+    def __init__(self):
+        self
+
 
 
 
