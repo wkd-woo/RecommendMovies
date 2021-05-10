@@ -27,6 +27,7 @@ urlpatterns = [
     path('profiles/', include('profileapp.urls')),
 
     path('articles/', include('articleapp.urls')),
-    #path('rm/', include('rmapp.urls')),
+    path('rm/', include('rmapp.urls')),
+    path('go/', include('goapp.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

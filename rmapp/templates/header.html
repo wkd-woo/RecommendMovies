@@ -1,12 +1,12 @@
 <header class="main-header">
-    <a href="" class="brand-logo">
+    <a href='{% url 'home' %}' class="brand-logo">
         <img src="/static/images/Logo.png">
         <!-- <div class="brand-logo-name">YT</div> -->
     </a>
     <nav class="main-nav">
         <ul>
-            <li><a href="recommend.html">Recommendation</a></li>
-            <li><a>About Us</a></li>
+            <li><a href="{% url 'goapp:recommend' %}">Recommendation</a></li>
+            <li><a href="{% url 'rmapp:about' %}">About Us</a></li>
             <!-- 만약 메인페이지가 아니라면 출력-->
             {% if user.is_authenticated %}
             <li><a href="{% url 'accountapp:detail' pk=user.pk %}">MyPage</a></li>
