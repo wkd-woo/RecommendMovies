@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'profileapp',
     'analysisapp',
     'rmapp',
+    'goapp',
     'bootstrap4',
 ]
 

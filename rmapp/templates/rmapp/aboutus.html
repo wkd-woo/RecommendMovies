@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-3 bg-dark">
+    <br>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'images/cinema.jpg' %}" class="img-fluid" alt="cinema" width="600" height="600">
+        </div>
+        <div class="col">
+            <br>
+            <p class="h1 text-center text-info">we are!</p>
+            <br>
+            <p class="text-left">
+                수많은 영화 중 관람할 영화를 결정하는 데 어려움을 겪어
+                <br>실제 콘텐츠를 보는 시간보다 무엇을 볼지 검색하는 시간이 더 길거나 시청을 포기하는 문제로부터
+                <br>우리는 사용자가 효율적인 여가 시간을 보낼 수 있도록 돕는 서비스 입니다.
+            </p>
+
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}
