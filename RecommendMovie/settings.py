@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'RecommendMovie.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-DATABASE_ROUTERS = ['path.dbrouter.MultiDBRouter']    # 다수의 DB를 사용하기 위한 DB 라우터.
+DATABASE_ROUTERS = ['RecommendMovie.dbrouter.MultiDBRouter']    # 다수의 DB를 사용하기 위한 DB 라우터.
 DATABASE_APPS_MAPPING = { 'genome_data' : 'genome_db', 'rating_data' : 'rating_db'}
 
 DATABASES = {
@@ -105,7 +105,7 @@ DATABASES = {
         'USER': 'root', # DB 접속 계정명
         'PASSWORD': '1234', # 해당 DB 접속 계정 비밀번호
         'HOST': 'localhost', # 실제 DB 주소
-        'PORT': '3006', # 포트번호
+        'PORT': '3306', # 포트번호
     },
     'rating_db': {  # 평점 db
         'ENGINE': 'django.db.backends.mysql', # 사용 엔진 , mysql
@@ -113,7 +113,7 @@ DATABASES = {
         'USER': 'root', # DB 접속 계정명
         'PASSWORD': '1234', # 해당 DB 접속 계정 비밀번호
         'HOST': 'localhost', # 실제 DB 주소
-        'PORT': '3006', # 포트번호
+        'PORT': '3306', # 포트번호
     }
 
 }
