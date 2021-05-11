@@ -85,8 +85,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'RecommendMovie.wsgi.application'
 
+
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+
+DATABASE_ROUTERS = ['path.dbrouter.MultiDBRouter']    # 다수의 DB를 사용하기 위한 DB 라우터.
+DATABASE_APPS_MAPPING = { 'genome_data' : 'genome_db', 'rating_data' : 'rating_db'}
+
 DATABASES = {
     'default': {  # 기본 db (user 정보 등)
         'ENGINE': 'django.db.backends.sqlite3',
