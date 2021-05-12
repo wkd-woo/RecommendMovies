@@ -10,6 +10,9 @@ import pickle
 import os
 import warnings
 
+currentpath = os.getcwd()
+
+warnings.filterwarnings('ignore')
 
 # DB 연결
 connToRating = pymysql.connect(host="localhost", user="root", password="1234",
@@ -20,9 +23,9 @@ query = "SELECT * FROM ratings"
 cursor.execute(query)
 
 ratings = pd.read_sql(query, connToRating)
-my_ratings = pd.read_csv('analysisapp/data/my_ratings_input.csv')
-movies = pd.read_csv('analysisapp/data/movies.csv')
-genres = pd.read_pickle('analysisapp/data/genres.p')
+my_ratings = pd.read_csv('data/my_ratings_input.csv')
+movies = pd.read_csv('data/movies.csv')
+genres = pd.read_pickle('data/genres.p')
 genre_cols = genres.columns
 
 
