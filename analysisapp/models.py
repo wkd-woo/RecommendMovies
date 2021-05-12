@@ -13,6 +13,5 @@ class Rating(models.Model): # 평점 모델.
     comment = models.CharField(max_length=240, verbose_name='코멘트', help_text='코멘트를 입력해 주세요. 240자 제한.') # 240자 제한
 
 
-
 #class RateManager():
    # def insert_rating(self, user_id, movie_id, rating):
