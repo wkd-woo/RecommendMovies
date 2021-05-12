@@ -33,7 +33,7 @@ def hello_world(request):
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('goapp:rating')
     template_name = 'accountapp/create.html'
 
 
