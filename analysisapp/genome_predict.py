@@ -24,6 +24,8 @@ ratings = pd.read_sql(query, connToRating)
 
 # load가 오래 걸려 우선은 inner data로 진행
 ratings = pd.read_csv('analysisapp/data/ratings.csv')
+genome_scores = pd.read_csv('analysisapp/data/genome-scores.csv')
+genome_tags = pd.read_csv('analysisapp/data/genome-tags.csv')
 my_ratings = pd.read_csv('analysisapp/data/my_ratings_input.csv')
 movies = pd.read_csv('analysisapp/data/movies.csv')
 with open('analysisapp/data/genres.p', 'rb') as f:
