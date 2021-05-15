@@ -15,6 +15,7 @@ currentpath = os.getcwd()
 warnings.filterwarnings('ignore')
 
 # DB 연결
+"""
 connToRating = pymysql.connect(host="localhost", user="root", password="1234",
                       db="rating_data", charset="utf8")
 cursor = connToRating.cursor(pymysql.cursors.DictCursor)
@@ -23,11 +24,16 @@ query = "SELECT * FROM ratings"
 cursor.execute(query)
 
 ratings = pd.read_sql(query, connToRating)
-my_ratings = pd.read_csv('data/my_ratings_input.csv')
-movies = pd.read_csv('data/movies.csv')
-genres = pd.read_pickle('data/genres.p')
+"""
+ratings = pd.read_csv('analysisapp/data/ratings.csv')
+my_ratings = pd.read_csv('analysisapp/data/my_ratings_input.csv')
+movies = pd.read_csv('analysisapp/data/movies.csv')
+with open('analysisapp/data/genres.p', 'rb') as f:
+    genres = pickle.load(f)
+genres = pd.read_pickle('analysisapp/data/genres.p')
 genre_cols = genres.columns
 
+my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
 model = Lasso()
 param_grid = {'alpha': sp_rand()}
