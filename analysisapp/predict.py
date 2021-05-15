@@ -11,20 +11,18 @@ import os
 import warnings
 
 currentpath = os.getcwd()
-
 warnings.filterwarnings('ignore')
-
 # DB 연결
 """
 connToRating = pymysql.connect(host="localhost", user="root", password="1234",
                       db="rating_data", charset="utf8")
 cursor = connToRating.cursor(pymysql.cursors.DictCursor)
-
 query = "SELECT * FROM ratings"
 cursor.execute(query)
-
 ratings = pd.read_sql(query, connToRating)
 """
+
+# load가 오래 걸려 우선은 inner data로 진행
 ratings = pd.read_csv('analysisapp/data/ratings.csv')
 my_ratings = pd.read_csv('analysisapp/data/my_ratings_input.csv')
 movies = pd.read_csv('analysisapp/data/movies.csv')
@@ -35,26 +33,38 @@ genre_cols = genres.columns
 
 my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
-model = Lasso()
-param_grid = {'alpha': sp_rand()}
-rsearch = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=200, cv=20, random_state=42)
+"""
+================ 환경 및 변수 설정 완료 ================
+"""
 
-user1003 = my_ratings[my_ratings['userId'] == 1003]
+class goRecommend():
 
-rsearch.fit(user1003[genre_cols], user1003['rating'])
+    def guessYouLikeIt(self):
+        model = Lasso() # 모델 설정
+        param_grid = {'alpha': sp_rand()}  
+        rsearch = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=200, cv=20, random_state=42)
 
-rsearch.best_estimator_.alpha
 
-intercept = rsearch.best_estimator_.intercept_
-coef = rsearch.best_estimator_.coef_
+        user1003 = my_ratings[my_ratings['userId'] == 1003] # 유저 설정, 이후에 일반화 가능
 
-user1003_profile = pd.DataFrame([intercept, *coef], index=['intercept', *genre_cols], columns=['score'])
+        rsearch.fit(user1003[genre_cols], user1003['rating']) # 장르 칼럼
 
-predictions = rsearch.best_estimator_.predict(genres)
-genres['user1003'] = predictions
+        rsearch.best_estimator_.alpha
 
-rating_predictions = genres[~genres.index.isin(user1003['movieId'])].sort_values('user1003', ascending=False)
+        intercept = rsearch.best_estimator_.intercept_
+        coef = rsearch.best_estimator_.coef_
 
-rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
+        user1003_profile = pd.DataFrame([intercept, *coef],  # 유저 profile 생성. 장르별 계수
+                                        index=['intercept', *genre_cols], columns=['score'])
 
-print(rating_predictions)
+        predictions = rsearch.best_estimator_.predict(genres)
+        genres['user1003'] = predictions
+
+        rating_predictions = genres[~genres.index.isin(user1003['movieId'])].sort_values('user1003', ascending=False)
+
+        rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
+
+        print(rating_predictions) # 예상 별점! 이를 토대로 can show best , worst or whatever something
+
+
+goRecommend.guessYouLikeIt(True)
