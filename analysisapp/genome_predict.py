@@ -33,12 +33,14 @@ with open('analysisapp/data/genres.p', 'rb') as f:
 genres = pd.read_pickle('analysisapp/data/genres.p')
 genre_cols = genres.columns
 
+genome_scores = pd.DataFrame[genome_scores.groupby('movieId')]
+#genome_movies = movies.merge(movies, on='movieId').merge(genome_scores, left_on='movieId', right_index=True)
 my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
-"""
-================ 환경 및 변수 설정 완료 ================
-"""
+#genome_movies = genome_movies[genome_movies.groupby('movieId')]
+# ================ 환경 및 변수 설정 완료 ================
 
+print(genome_scores)
 
 class goRecommend():
 
@@ -76,6 +78,3 @@ class YourProfile():
     def showRateDistribution(self):
         YOU = my_ratings[my_ratings['userId'] == 1003]  # 유저 설정
         YourDistribution = YOU['rating'].hist()  # 평점 분포 히스토그램 : 프론트에서 graph를 보여주려면? -> 찾아보기. 이후 profile 적용 !
-
-goRecommend.guessYouLikeIt(True, 1003)
-#YourProfile.showRateDistribution(True)

@@ -33,9 +33,8 @@ genre_cols = genres.columns
 
 my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
-"""
-================ 환경 및 변수 설정 완료 ================
-"""
+
+# ================ 환경 및 변수 설정 완료 ================
 
 
 class goRecommend():
