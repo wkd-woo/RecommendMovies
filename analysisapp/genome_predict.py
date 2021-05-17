@@ -34,7 +34,7 @@ genres = pd.read_pickle('analysisapp/data/genres.p')
 genre_cols = genres.columns
 
 genome_scores = pd.DataFrame[genome_scores.groupby('movieId')]
-#genome_movies = movies.merge(movies, on='movieId').merge(genome_scores, left_on='movieId', right_index=True)
+#genome_movies = movies.merge(movies, on='movieId').merge(genzome_scores, left_on='movieId', right_index=True)
 my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
 #genome_movies = genome_movies[genome_movies.groupby('movieId')]
