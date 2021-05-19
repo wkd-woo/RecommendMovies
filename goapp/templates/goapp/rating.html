@@ -1,16 +1,46 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-    <div class="container my-3">
+<style>
+
+.container div {
+  width: 250px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.container img {
+width: 100%;
+}
+
+/*
+ * div 태그 안 p태그 수정하여 안정적으로 텍스트 넣기
+.container p {
+
+}
+*/
+
+</style>
+    <!--div 부트스트랩 container 클래스를 사용하면 자바스크립트 파일(도 container 때문)과 충돌발생-->
+    <div>
         <h2>영화를 평가해주세요!</h2>
         <br>
-        
     </div>
-
+    <div class="container">
+        {% for movie in movie_list %}
+            <div>
+                <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}"></img>
+                <!--<p>{{ movie.title }}</p>-->
+            </div>
+        {% endfor %}
+    </div>
     <br>
 
     <div class="container my-3 text-center">
         <a href="{% url 'goapp:recommend' %}" class="btn">영화 추천 받기</a>
     </div>
-
+<script src="{% static 'js/magicgrid.js' %}"></script>
 {% endblock %}

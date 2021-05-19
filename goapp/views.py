@@ -22,8 +22,9 @@ def rating_home(request):
     Movie.objects.bulk_create(list)
 
     return HttpResponse('create model ')"""
-
+    movie_list = Movie.objects.all().filter(imgurl__contains='/')[:30]
+    #Movie 모델의 imgurl모델에서 '/'문자열을 포함하는 30개의 데이터 조회
     context ={
-        Movie.objects.get(30)
+        'movie_list':movie_list
     }
     return render(request, 'goapp/rating.html', context)

@@ -277,7 +277,7 @@ MagicGrid.prototype.listen = function listen () {
 let magicGrid = new MagicGrid({
   container: '.container',
   animate: true,
-  gutter: 10,
+  gutter: 30,
   static: true,
   useMin: true
 });
