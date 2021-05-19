@@ -63,9 +63,11 @@ class goRecommend():
         rating_predictions = genres[~genres.index.isin(YOU['movieId'])].sort_values('YOU', ascending=False)
         rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
 
-        Top5 = rating_predictions.sort_values(by='YOU', ascending=False)[:5] # 추천 TOP 5
-        Worst5 = rating_predictions.sort_values(by='YOU', ascending=True)[:5] # 비추천 WORST 5
-        print(Top5)  # 예상 별점! 이를 토대로 can show best , worst or whatever something
+        Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12] # 추천 TOP 5
+        Top12 = Top12['movieId'].to_list()
+
+        print(Top12)
+        return Top12  # 예상 별점! 이를 토대로 can show best , worst or whatever something
 
 
 class YourProfile():
