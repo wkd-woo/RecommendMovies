@@ -6,5 +6,5 @@ app_name = 'goapp'
 
 urlpatterns = [
     path('', views.recommend, name='recommend'),
-    path('rating/', views.rating, name='rating'),
+    path('rating/', views.rating_home, name='rating_home'),
 ]
