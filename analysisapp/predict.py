@@ -64,9 +64,10 @@ class goRecommend():
         rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
 
         Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12] # 추천 TOP 5
+        Worst12 = rating_predictions.sort_values(by='YOU', ascending=True)[:12] # 비추천 TOP 5
+
         Top12 = Top12['movieId'].to_list()
 
-        print(Top12)
         return Top12  # 예상 별점! 이를 토대로 can show best , worst or whatever something
 
 
