@@ -1,17 +1,16 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import pymysql
-import seaborn as sns
-from sklearn.linear_model import Lasso
-from sklearn.model_selection import RandomizedSearchCV
-from scipy.stats import uniform as sp_rand
-import pickle
 import os
+import pickle
 import warnings
+
+import pandas as pd
+from scipy.stats import uniform as sp_rand
+from sklearn.model_selection import RandomizedSearchCV
+
+from apps import AnalysisappConfig
 
 currentpath = os.getcwd()
 warnings.filterwarnings('ignore')
+
 # DB 연결
 """
 connToRating = pymysql.connect(host="localhost", user="root", password="1234",
@@ -31,6 +30,10 @@ with open('analysisapp/data/genres.p', 'rb') as f:
 genres = pd.read_pickle('analysisapp/data/genres.p')
 genre_cols = genres.columns
 
+genre_dict = {1: 'Action', 2: 'Adventure', 3: 'Animation', 4: 'Children', 5: 'Comedy', 6: 'Crime', 7: 'Documentary',
+              8: 'Drama', 9: 'Fantasy', 10: 'Film-Noir', 11: 'Horror', 12: 'IMAX', 13: 'Musical', 14: 'Mystery',
+              15: 'Romance', 16: 'Sci-Fi', 17: 'Thriller', 18: 'War', 19: 'Western'}
+
 my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
 
@@ -39,10 +42,10 @@ my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movie
 
 class goRecommend():
 
-    def guessYouLikeIt(self, userId):
-        model = Lasso()  # 모델 설정
+    def Prediction(self, userId):
         param_grid = {'alpha': sp_rand()}
-        rsearch = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=200, cv=20,
+        rsearch = RandomizedSearchCV(estimator=AnalysisappConfig.model, param_distributions=param_grid, n_iter=200,
+                                     cv=20,
                                      random_state=42)
 
         YOU = my_ratings[my_ratings['userId'] == userId]  # 유저 설정, userID 값으로 YOU 설정
@@ -63,11 +66,31 @@ class goRecommend():
         rating_predictions = genres[~genres.index.isin(YOU['movieId'])].sort_values('YOU', ascending=False)
         rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
 
-        Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12] # 추천 TOP 5
-        Top12 = Top12['movieId'].to_list()
+        return rating_predictions  # 예상 별점! it can show the best, worst or whatever something
 
-        print(Top12)
-        return Top12  # 예상 별점! 이를 토대로 can show best , worst or whatever something
+    def guessYouLikeIt(self, userId):
+        rating_predictions = self.Prediction(userId)
+
+        Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12]  # 추천 TOP 12
+
+        Top12 = Top12['movieId'].to_list()
+        return Top12  # ItCanBeYourTop12
+
+    def guessYouHateIt(self, userId):
+        rating_predictions = self.Prediction(userId)
+
+        Worst12 = rating_predictions.sort_values(by='YOU', ascending=True)[:12]  # 비추천 TOP 12
+
+        Worst12 = Worst12['movieId'].to_list()
+        return Worst12  # ItCanBeYourTop12
+
+    def genreThatYouLike(self, userId, genre):
+        rating_predictions = self.Prediction(userId)
+        GenreTop12 = rating_predictions[rating_predictions[genre_dict[genre]]
+                                        != 0].sort_values(by='YOU', ascending=False)[:12]  # 장르 추천 TOP 12
+
+        print(GenreTop12)
+        return GenreTop12  # 장르 Top 12
 
 
 class YourProfile():
@@ -76,5 +99,9 @@ class YourProfile():
         YOU = my_ratings[my_ratings['userId'] == 1003]  # 유저 설정
         YourDistribution = YOU['rating'].hist()  # 평점 분포 히스토그램 : 프론트에서 graph를 보여주려면? -> 찾아보기. 이후 profile 적용 !
 
-goRecommend.guessYouLikeIt(True, 1003)
-#YourProfile.showRateDistribution(True)
+
+g = goRecommend()
+# g.guessYouLikeIt(1003)
+g.genreThatYouLike(1003, 3)
+
+# YourProfile.showRateDistribution(True)
