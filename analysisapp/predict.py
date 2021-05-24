@@ -4,7 +4,7 @@ import warnings
 import pandas as pd
 from scipy.stats import uniform as sp_rand
 from sklearn.model_selection import RandomizedSearchCV
-from apps import AnalysisappConfig
+from analysisapp.apps import AnalysisappConfig
 
 currentpath = os.getcwd()
 warnings.filterwarnings('ignore')
@@ -88,6 +88,7 @@ class goRecommend():
                                         != 0].sort_values(by='YOU', ascending=False)[:12]  # 장르 추천 TOP 12
 
         GenreTop12 = GenreTop12[['movieId', 'YOU']]
+        print(GenreTop12)
         return GenreTop12  # 장르 Top 12
 
 
