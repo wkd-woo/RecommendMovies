@@ -71,8 +71,9 @@ class goRecommend():
 
         Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12]  # 추천 TOP 12
 
-        Top12 = Top12[['movieId', 'YOU']]
-        return Top12  # ItCanBeYourTop12
+        TopMovieId = Top12['movieId'].to_array()
+        TopMoviePred = Top12['YOU'].to_array()
+        return TopMovieId,TopMoviePred  # ItCanBeYourTop12
 
     def guessYouHateIt(self, userId):
         rating_predictions = self.Prediction(userId)
