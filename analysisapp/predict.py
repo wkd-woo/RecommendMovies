@@ -1,11 +1,9 @@
 import os
 import pickle
 import warnings
-
 import pandas as pd
 from scipy.stats import uniform as sp_rand
 from sklearn.model_selection import RandomizedSearchCV
-
 from apps import AnalysisappConfig
 
 currentpath = os.getcwd()
@@ -37,7 +35,7 @@ genre_dict = {1: 'Action', 2: 'Adventure', 3: 'Animation', 4: 'Children', 5: 'Co
 my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movieId', right_index=True)
 
 
-# ================ 환경 및 변수 설정 완료 ================
+# ================ 환경 및 변수 설정 완료 ================ #
 
 
 class goRecommend():
@@ -73,7 +71,7 @@ class goRecommend():
 
         Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12]  # 추천 TOP 12
 
-        Top12 = Top12['movieId'].to_list()
+        Top12 = Top12[['movieId', 'YOU']]
         return Top12  # ItCanBeYourTop12
 
     def guessYouHateIt(self, userId):
@@ -81,15 +79,15 @@ class goRecommend():
 
         Worst12 = rating_predictions.sort_values(by='YOU', ascending=True)[:12]  # 비추천 TOP 12
 
-        Worst12 = Worst12['movieId'].to_list()
-        return Worst12  # ItCanBeYourTop12
+        Worst12 = Worst12[['movieId', 'YOU']]
+        return Worst12  # ItCanBeYourWorst12
 
     def genreThatYouLike(self, userId, genre):
         rating_predictions = self.Prediction(userId)
         GenreTop12 = rating_predictions[rating_predictions[genre_dict[genre]]
                                         != 0].sort_values(by='YOU', ascending=False)[:12]  # 장르 추천 TOP 12
 
-        print(GenreTop12)
+        GenreTop12 = GenreTop12[['movieId', 'YOU']]
         return GenreTop12  # 장르 Top 12
 
 
@@ -101,7 +99,7 @@ class YourProfile():
 
 
 g = goRecommend()
-# g.guessYouLikeIt(1003)
-g.genreThatYouLike(1003, 3)
+g.genreThatYouLike(1003, 14)
+# g.genreThatYouLike(1003, 3)
 
 # YourProfile.showRateDistribution(True)
