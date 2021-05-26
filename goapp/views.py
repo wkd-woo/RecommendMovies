@@ -12,6 +12,7 @@ from analysisapp.predict import goRecommend
 # Create your views here.
 
 def recommend(request):
+
     """g = goRecommend()
     m_id, pred = g.guessYouLikeIt(1003)
 
@@ -19,6 +20,7 @@ def recommend(request):
         'movieId': m_id,
         'predicted': pred
     }"""
+
     context = {
 
     }
