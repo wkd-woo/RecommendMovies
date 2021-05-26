@@ -1,11 +1,23 @@
 from django.contrib.auth.models import User
 from django.db import models
+from picklefield.fields import PickledObjectField
+import numpy
+
+from goapp.models import Movie
+from pandas import DataFrame
 
 
 # Create your models here.
 
+class Results(models.Model):  # 결과 모델
+    result_id = models.AutoField(primary_key=True)  # result_id, pk
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)  # 내부 DB에 있는 USER 연동. foreignKey
+    """어떤 user의 result 인지 알아야 하기 때문"""
+    resultDF = PickledObjectField()  # 데이터프레임 저장
+
+
 class Rating(models.Model):  # 평점 모델.
-    rating_id = models.AutoField(primary_key=True)  # rating_gid, pk
+    rating_id = models.AutoField(primary_key=True)  # rating_id, pk
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)  # 내부 DB에 있는 USER 연동. foreignKey
     movie_id = models.IntegerField()  # 외부 DB에 있는 movies 연동. foreignKey
     rating = models.FloatField(default=2.5, verbose_name='평점')  # 평점
@@ -27,8 +39,6 @@ def rateManager(self, user_id, movie_id, rating, comment):
         r_model.comment = comment
         return r_model
 
-    insertedRate = Rating() # model 생성 후
-    insertedRate = insert_rating(insertedRate, user_id, movie_id, rating, comment) # 테이블 입력!
-    return insertedRate # 반환
-
-
+    insertedRate = Rating()  # model 생성 후
+    insertedRate = insert_rating(insertedRate, user_id, movie_id, rating, comment)  # 테이블 입력!
+    return insertedRate  # 반환
