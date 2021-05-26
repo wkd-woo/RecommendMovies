@@ -4,8 +4,8 @@ import warnings
 import pandas as pd
 from scipy.stats import uniform as sp_rand
 from sklearn.model_selection import RandomizedSearchCV
-from analysisapp.apps import AnalysisappConfig
-from analysisapp.models import Results
+from apps import AnalysisappConfig
+from .models import Results
 
 currentpath = os.getcwd()
 warnings.filterwarnings('ignore')
@@ -65,6 +65,7 @@ class goRecommend():
         rating_predictions = genres[~genres.index.isin(YOU['movieId'])].sort_values('YOU', ascending=False)
         rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
 
+        Results.objects.create(1003)
 
         return rating_predictions  # 예상 별점! it can show the best, worst or whatever something
 
@@ -102,8 +103,8 @@ class YourProfile():
         YourDistribution = YOU['rating'].hist()  # 평점 분포 히스토그램 : 프론트에서 graph를 보여주려면? -> 찾아보기. 이후 profile 적용 !
 
 
-g = goRecommend()
+#g = goRecommend()
 #g.genreThatYouLike(1003, 14)
-g.guessYouLikeIt(1003)
+#g.guessYouLikeIt(1003)
 
 # YourProfile.showRateDistribution(True)

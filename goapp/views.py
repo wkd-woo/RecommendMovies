@@ -7,11 +7,15 @@ import os, sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from analysisapp.predict import goRecommend
-
+from analysisapp.models import Results
 
 # Create your views here.
 
 def recommend(request):
+    qs = Results.pdobjects.all()
+    rating_predictions = qs.to_dataframe()
+
+
     context = {
     }
     return render(request, 'goapp/recommend.html', context)

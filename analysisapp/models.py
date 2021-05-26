@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from picklefield.fields import PickledObjectField
+from django_pandas.managers import DataFrameManager
 import numpy
 
 from goapp.models import Movie
@@ -13,7 +14,8 @@ class Results(models.Model):  # 결과 모델
     result_id = models.AutoField(primary_key=True)  # result_id, pk
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)  # 내부 DB에 있는 USER 연동. foreignKey
     """어떤 user의 result 인지 알아야 하기 때문"""
-    resultDF = PickledObjectField()  # 데이터프레임 저장
+    objects = models.Manager()
+    rsobjects = DataFrameManager()  # 데이터프레임 저장
 
 
 class Rating(models.Model):  # 평점 모델.
