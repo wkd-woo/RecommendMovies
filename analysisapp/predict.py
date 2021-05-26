@@ -5,6 +5,7 @@ import pandas as pd
 from scipy.stats import uniform as sp_rand
 from sklearn.model_selection import RandomizedSearchCV
 from analysisapp.apps import AnalysisappConfig
+from analysisapp.models import Results
 
 currentpath = os.getcwd()
 warnings.filterwarnings('ignore')
@@ -40,11 +41,11 @@ my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movie
 
 class goRecommend():
 
-    def Prediction(self, userId):
+    def Predict(self, userId):
         param_grid = {'alpha': sp_rand()}
         rsearch = RandomizedSearchCV(estimator=AnalysisappConfig.model, param_distributions=param_grid, n_iter=200,
                                      cv=20,
-                                     random_state=42)
+                                     random_state=42) # model: Lasso
 
         YOU = my_ratings[my_ratings['userId'] == userId]  # 유저 설정, userID 값으로 YOU 설정
 
@@ -64,19 +65,20 @@ class goRecommend():
         rating_predictions = genres[~genres.index.isin(YOU['movieId'])].sort_values('YOU', ascending=False)
         rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
 
+
         return rating_predictions  # 예상 별점! it can show the best, worst or whatever something
 
     def guessYouLikeIt(self, userId):
-        rating_predictions = self.Prediction(userId)
+        rating_predictions = self.Predict(userId)
 
         Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12]  # 추천 TOP 12
 
-        TopMovieId = Top12['movieId'].to_array()
-        TopMoviePred = Top12['YOU'].to_array()
-        return TopMovieId,TopMoviePred  # ItCanBeYourTop12
+        Top12 = Top12[['movieId','YOU']]
+        js = Top12.to_json(orient = 'columns')
+        return Top12  # ItCanBeYourTop12
 
     def guessYouHateIt(self, userId):
-        rating_predictions = self.Prediction(userId)
+        rating_predictions = self.Predict(userId)
 
         Worst12 = rating_predictions.sort_values(by='YOU', ascending=True)[:12]  # 비추천 TOP 12
 
@@ -84,11 +86,12 @@ class goRecommend():
         return Worst12  # ItCanBeYourWorst12
 
     def genreThatYouLike(self, userId, genre):
-        rating_predictions = self.Prediction(userId)
+        rating_predictions = self.Predict(userId)
         GenreTop12 = rating_predictions[rating_predictions[genre_dict[genre]]
                                         != 0].sort_values(by='YOU', ascending=False)[:12]  # 장르 추천 TOP 12
 
         GenreTop12 = GenreTop12[['movieId', 'YOU']]
+        print(GenreTop12)
         return GenreTop12  # 장르 Top 12
 
 
@@ -100,7 +103,7 @@ class YourProfile():
 
 
 g = goRecommend()
-g.genreThatYouLike(1003, 14)
-# g.genreThatYouLike(1003, 3)
+#g.genreThatYouLike(1003, 14)
+g.guessYouLikeIt(1003)
 
 # YourProfile.showRateDistribution(True)
