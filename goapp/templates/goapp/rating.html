@@ -56,7 +56,7 @@
         <!--영화 정보 모델에서 for문을 통해 div 생성해 로드-->
         {% for movie in movie_list %}
 
-            <div>
+            <div class="{{ movie.movieId }}">
                 <br>
                 <!--영화 포스터-->
                 <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}"></img>
