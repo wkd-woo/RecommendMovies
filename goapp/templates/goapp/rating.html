@@ -65,13 +65,17 @@
                     {{ movie.title }}
                 </p>
                 <!--영화 별점-->
-                <div class="star_rating text-center">
-                    <a href="#" class="star05">★</a>
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-                </div>
+                <form class="rate-form" action="" method="POST">
+                    <div class="star_rating text-center">
+                        {% csrf_token %}    <!--post 요청 메소드 csrf 토큰-->
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                    </div>
+                </form>
+
                 <br>
 
             </div>
@@ -82,7 +86,7 @@
 
     <br>
 
-    <!--영화 추천 받기 버튼을 클릭하면 추천페이지로 간다다-->
+    <!--영화 추천 받기 버튼을 클릭하면 추천페이지로 간다-->
     <div class="container my-3 text-center">
         <a href="{% url 'goapp:recommend' %}" class="btn">영화 추천 받기</a>
     </div>

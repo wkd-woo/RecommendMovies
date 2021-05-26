@@ -1,19 +1,18 @@
 from django.shortcuts import HttpResponse, render
-from .models import *
+from .models import Movie
 import csv
-import pandas as pd
-"""# 프로젝트 root를 import 참조 경로에 추가
+"""import pandas as pd
+# 프로젝트 root를 import 참조 경로에 추가
 import os, sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-from analysisapp.predict import goRecommend"""
-
+from analysisapp.predict import goRecommend
+"""
 
 # Create your views here.
 
 def recommend(request):
-    """
-    g = goRecommend()
+    """g = goRecommend()
     m_id, pred = g.guessYouLikeIt(1003)
 
     context = {
