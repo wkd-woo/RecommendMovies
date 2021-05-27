@@ -16,29 +16,30 @@
 </div>
     <div class="container my-3">
         <div class="recommend bg-gray">
+            <!--1. 예상 별점이 높은 작품-->
             <div class="object"><h3>예상 별점이 높은 작품</h3></div>
             <div class="owl-carousel owl-theme">
             <div class="frame">
+                <!--for문 시작 12개까지 -->
+                <!--순서-->
                 <div class="item"><h4>1</h4></div>
+                <!--포스터-->
                 <div class="img">
                     <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@..jpg"
                          alt="1">
                 </div>
+                <!--영화 제목-->
                 <div class="movietitle text-center">
                     <br>
                     <p>title</p>
                 </div>
+                <!--영화 평점-->
                 <div class="movierating text-center">
-                    <p class="star_rating">
-                        <a href="#" class="on">★</a>
-                        <a href="#" class="on">★</a>
-                        <a href="#" class="on">★</a>
-                        <a href="#">★</a>
-                        <a href="#">★</a>
+                    <p class="star_rating_string">
+                        ★점
                     </p>
                 </div>
             </div>
-
             <div class="item"><h4>2</h4></div>
             <div class="item"><h4>3</h4></div>
             <div class="item"><h4>4</h4></div>
@@ -53,26 +54,28 @@
             </div>
         </div>
         <br>
+        <!--2. 로맨스 장르-->
         <div class="romance">
             <div class="object"><h3>로맨스</h3></div>
             <div class="owl-carousel owl-theme">
             <div class="frame">
+                <!--for문 시작 12개까지 -->
+                <!--순서-->
                 <div class="item"><h4>1</h4></div>
+                <!--포스터-->
                 <div class="img">
                     <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzk2OTg4MTk1NF5BMl5BanBnXkFtZTcwNjExNTgzNA@@..jpg"
                          alt="2">
                 </div>
+                <!--영화 제목-->
                 <div class="movietitle text-center">
                     <br>
                     <p>title</p>
                 </div>
+                <!--영화 평점-->
                 <div class="movierating text-center">
-                    <p class="star_rating">
-                        <a href="#" class="on">★</a>
-                        <a href="#" class="on">★</a>
-                        <a href="#" class="on">★</a>
-                        <a href="#">★</a>
-                        <a href="#">★</a>
+                    <p class="star_rating_string">
+                        ★점
                     </p>
                 </div>
             </div>
@@ -93,36 +96,7 @@
     </div>
 
 <br>
-    <style>
-        .star_rating {
-            font-size: 0;
-            letter-spacing: -4px;
-        }
-
-        .star_rating a {
-            font-size: 22px;
-            letter-spacing: 0;
-            display: inline-block;
-            margin-left: 5px;
-            color: #ccc;
-            text-decoration: none;
-        }
-
-        .star_rating a:first-child {
-            margin-left: 0;
-        }
-
-        .star_rating a.on {
-            color: #777;
-        }
-    </style>
-    <script>
-        $(".star_rating a").click(function () {
-            $(this).parent().children("a").removeClass("on");
-            $(this).addClass("on").prevAll("a").addClass("on");
-            return false;
-        });
-    </script>
+    <!--carousel js 코드-->
     <script>
         $(function () {
             $('.owl-carousel').owlCarousel({

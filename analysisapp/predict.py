@@ -4,7 +4,7 @@ import warnings
 import pandas as pd
 from scipy.stats import uniform as sp_rand
 from sklearn.model_selection import RandomizedSearchCV
-from apps import AnalysisappConfig
+from .apps import AnalysisappConfig
 from .models import Results
 
 currentpath = os.getcwd()

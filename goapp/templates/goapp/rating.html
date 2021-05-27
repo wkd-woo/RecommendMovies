@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <!--css-->
     <style>
-
+        /*
+         * 영화 리스트 style/css
+         */
         .container div {
             width: 250px;
             background-color: #202027;
@@ -16,29 +19,81 @@
             width: 100%;
         }
 
+        /*
+         * 영화 평점 style/css
+         */
+        .star_rating {
+            font-size: 0;
+            letter-spacing: -4px;
+        }
+
+        .star_rating a {
+            font-size: 30px;
+            letter-spacing: 0;
+            display: inline-block;
+            margin-left: 5px;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .star_rating a:first-child {
+            margin-left: 0;
+        }
+
+        .star_rating a.on {
+            color: orange;
+        }
+
     </style>
+
     <!--div 부트스트랩 container 클래스를 사용하면 자바스크립트 파일(도 container 때문)과 충돌발생-->
     <div>
         <h2>영화를 평가해주세요!</h2>
         <br>
     </div>
+    <!--영화 리스트-->
     <div class="container">
+        <!--영화 정보 모델에서 for문을 통해 div 생성해 로드-->
         {% for movie in movie_list %}
 
-            <div>
+            <div class="{{ movie.movieId }}">
+                <br>
+                <!--영화 포스터-->
                 <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}"></img>
+                <!--영화 타이틀-->
                 <p style="text-align: center">
                     {{ movie.title }}
                 </p>
+                <!--영화 별점-->
+                <form class="rate-form" action="" method="POST">
+                    <div class="star_rating text-center">
+                        {% csrf_token %}    <!--post 요청 메소드 csrf 토큰-->
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                        <a type="submit" href="#">★</a>
+                    </div>
+                </form>
+
+                <br>
+
             </div>
 
         {% endfor %}
+        <!--영화 for문 끝-->
     </div>
 
     <br>
 
+    <!--영화 추천 받기 버튼을 클릭하면 추천페이지로 간다-->
     <div class="container my-3 text-center">
         <a href="{% url 'goapp:recommend' %}" class="btn">영화 추천 받기</a>
     </div>
+
+    <!--영화 리스트 js-->
     <script src="{% static 'js/magicgrid.js' %}"></script>
+    <!--별점 js js-->
+    <script src="{% static 'js/ratingstar.js' %}"></script>
+
 {% endblock %}
