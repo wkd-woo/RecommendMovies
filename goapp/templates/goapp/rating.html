@@ -59,22 +59,27 @@
             <div class="{{ movie.movieId }}">
                 <br>
                 <!--영화 포스터-->
-                <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}"></img>
+                {% if movie.imgurl != Null %}
+                    <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}"></img>
+                {% else %}
+                    <p style="text-align: center">
+                    No Img
+                    </p>
+                {% endif %}
                 <!--영화 타이틀-->
-                <p style="text-align: center">
+                <a href="{% url 'goapp:rating_detail' movie.movieId %}">
+                    <p style="text-align: center">
                     {{ movie.title }}
-                </p>
+                    </p>
+                </a>
                 <!--영화 별점-->
-                <form class="rate-form" action="" method="POST">
-                    <div class="star_rating text-center">
-                        {% csrf_token %}    <!--post 요청 메소드 csrf 토큰-->
-                        <a type="submit" href="#">★</a>
-                        <a type="submit" href="#">★</a>
-                        <a type="submit" href="#">★</a>
-                        <a type="submit" href="#">★</a>
-                        <a type="submit" href="#">★</a>
-                    </div>
-                </form>
+                <div class="star_rating text-center">
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                </div>
 
                 <br>
 
@@ -85,6 +90,45 @@
     </div>
 
     <br>
+
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if movie_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ movie_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in movie_list.paginator.page_range %}
+            {% if page_number >= movie_list.number|add:-5 and page_number <= movie_list.number|add:5 %}
+                {% if page_number == movie_list.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if movie_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ movie_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
 
     <!--영화 추천 받기 버튼을 클릭하면 추천페이지로 간다-->
     <div class="container my-3 text-center">
