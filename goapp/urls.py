@@ -7,4 +7,5 @@ app_name = 'goapp'
 urlpatterns = [
     path('', views.recommend, name='recommend'),
     path('rating/', views.rating_home, name='rating_home'),
+    path('<str:movie_id>/', views.rating_detail, name='rating_detail'),
 ]

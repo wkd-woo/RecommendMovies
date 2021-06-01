@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-3" style="background-color:#202027;border-radius: 1rem;">
+    <div class="row">
+        <!-- 영화 포스터 -->
+        <div class="col">
+            <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}" class="img-fluid" alt="cinema" width="600" height="600">
+        </div>
+        <div class="col">
+            <br>
+            <!-- 영화 제목 -->
+            <p class="h1 text-center">{{ movie.title }}</p>
+            <br>
+            <!-- 별점 수정 필요-->
+            <div class="star_rating text-center">
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+                    <a href="#">★</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--별점 js js-->
+    <script src="{% static 'js/ratingstar.js' %}"></script>
+{% endblock %}

@@ -2,6 +2,7 @@ import os
 import pickle
 import warnings
 import pandas as pd
+import numpy as np
 from scipy.stats import uniform as sp_rand
 from sklearn.model_selection import RandomizedSearchCV
 from .apps import AnalysisappConfig
@@ -40,12 +41,11 @@ my_ratings = my_ratings.merge(movies, on='movieId').merge(genres, left_on='movie
 
 
 class goRecommend():
-
     def Predict(self, userId):
         param_grid = {'alpha': sp_rand()}
         rsearch = RandomizedSearchCV(estimator=AnalysisappConfig.model, param_distributions=param_grid, n_iter=200,
                                      cv=20,
-                                     random_state=42) # model: Lasso
+                                     random_state=42)  # model: Lasso
 
         YOU = my_ratings[my_ratings['userId'] == userId]  # 유저 설정, userID 값으로 YOU 설정
 
@@ -65,46 +65,35 @@ class goRecommend():
         rating_predictions = genres[~genres.index.isin(YOU['movieId'])].sort_values('YOU', ascending=False)
         rating_predictions = rating_predictions.merge(movies[['movieId', 'title']], left_index=True, right_on='movieId')
 
-        Results.objects.create(1003)
-
         return rating_predictions  # 예상 별점! it can show the best, worst or whatever something
-
-    def guessYouLikeIt(self, userId):
-        rating_predictions = self.Predict(userId)
-
-        Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12]  # 추천 TOP 12
-
-        Top12 = Top12[['movieId','YOU']]
-        js = Top12.to_json(orient = 'columns')
-        return Top12  # ItCanBeYourTop12
-
-    def guessYouHateIt(self, userId):
-        rating_predictions = self.Predict(userId)
-
-        Worst12 = rating_predictions.sort_values(by='YOU', ascending=True)[:12]  # 비추천 TOP 12
-
-        Worst12 = Worst12[['movieId', 'YOU']]
-        return Worst12  # ItCanBeYourWorst12
-
-    def genreThatYouLike(self, userId, genre):
-        rating_predictions = self.Predict(userId)
-        GenreTop12 = rating_predictions[rating_predictions[genre_dict[genre]]
-                                        != 0].sort_values(by='YOU', ascending=False)[:12]  # 장르 추천 TOP 12
-
-        GenreTop12 = GenreTop12[['movieId', 'YOU']]
-        print(GenreTop12)
-        return GenreTop12  # 장르 Top 12
 
 
 class YourProfile():
-
     def showRateDistribution(self):
         YOU = my_ratings[my_ratings['userId'] == 1003]  # 유저 설정
         YourDistribution = YOU['rating'].hist()  # 평점 분포 히스토그램 : 프론트에서 graph를 보여주려면? -> 찾아보기. 이후 profile 적용 !
+        return
 
 
-#g = goRecommend()
-#g.genreThatYouLike(1003, 14)
-#g.guessYouLikeIt(1003)
 
-# YourProfile.showRateDistribution(True)
+
+def guessYouLikeIt(rating_predictions, userId):
+    Top12 = rating_predictions.sort_values(by='YOU', ascending=False)[:12]  # 추천 TOP 12
+
+    Top12 = list(Top12[['movieId', 'YOU']].to_dict().values())
+    Top12 = dict(zip(list(Top12[0].values()), list(Top12[1].values())))
+    return Top12  # ItCanBeYourTop12
+
+def guessYouHateIt(rating_predictions, userId):
+    Worst12 = rating_predictions.sort_values(by='YOU', ascending=True)[:12]  # 비추천 TOP 12
+
+    Worst12 = list(Worst12[['movieId', 'YOU']].to_dict().values())
+    Worst12 = dict(zip(list(Worst12[0].values()), list(Worst12[1].values())))
+    return Worst12  # ItCanBeYourWorst12
+
+def genreThatYouLike(rating_predictions, userId, genre):
+    GenreTop12 = rating_predictions[rating_predictions[genre_dict[genre]]
+                                    != 0].sort_values(by='YOU', ascending=False)[:12]  # 장르 추천 TOP 12
+    GenreTop12 = list(GenreTop12[['movieId', 'YOU']].to_dict().values())
+    GenreTop12 = dict(zip(list(GenreTop12[0].values()), list(GenreTop12[1].values())))
+    return GenreTop12  # 장르 Top 12
