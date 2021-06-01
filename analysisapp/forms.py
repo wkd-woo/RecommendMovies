@@ -8,7 +8,6 @@ class ResultsCreationForm(ModelForm):
         fields = '__all__'
 
 
-
 class RatingCreationForm(ModelForm):
     class Meta:
         model = Rating

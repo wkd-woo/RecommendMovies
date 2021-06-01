@@ -1,4 +1,8 @@
 from django.shortcuts import HttpResponse, render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from analysisapp.forms import ResultsCreationForm
+from analysisapp.predict import *
 from .models import Movie
 import csv
 import pandas as pd
@@ -7,10 +11,17 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
-def recommend(request):
-    qs = Results.pdobjects.all()
-    rating_predictions = qs.to_dataframe()
 
+
+
+def recommend(request):
+    objects = goRecommend()
+    PredictDataFrame = objects.Predict(1003) # userId로 변경가능!!!!
+
+    Top12 = guessYouLikeIt(PredictDataFrame, 1003)
+    Worst12 = guessYouHateIt(PredictDataFrame, 1003)
+    Action = genreThatYouLike(PredictDataFrame, 1003, 1)
+    Romance = genreThatYouLike(PredictDataFrame, 1003, 15)
 
     context = {
     }
@@ -22,20 +33,26 @@ def rating_home(request):
     poster_movieFile = open(poster_moviePath, 'r', encoding='ISO-8859-1')
     poster_movieReader = csv.reader(poster_movieFile)
     print('-------', poster_movieReader)
-    """list = []
-    for row in poster_movieReader:
-        list.append(Movie(movieId=row[1],
-                          title=row[2],
-                          genres=row[3],
-                          imgurl=row[4]))
-    Movie.objects.bulk_create(list)
 
-    return HttpResponse('create model ')"""
-    """movie_list = Movie.objects.all().filter(imgurl__contains='/')[:30]
-    # Movie 모델의 imgurl모델에서 '/'문자열을 포함하는 30개의 데이터 조회
-    context = {
-        'movie_list': movie_list
-    }"""
+#======================================
+    def ormMovieImport():
+        list = []
+        for row in poster_movieReader:
+            list.append(Movie(movieId=row[1],
+                              title=row[2],
+                              genres=row[3],
+                              imgurl=row[4]))
+        Movie.objects.bulk_create(list)
+
+        return HttpResponse('create model ')
+        movie_list = Movie.objects.all().filter(imgurl__contains='/')[:30]
+        # Movie 모델의 imgurl모델에서 '/'문자열을 포함하는 30개의 데이터 조회
+        context = {
+            'movie_list': movie_list
+        }
+#=======================================
+
+
     # 입력 파라미터
     page = request.GET.get('page', '1') # 페이지
 
@@ -57,3 +74,4 @@ def rating_detail(request, movie_id):
         'movie':movie
     }
     return render(request, 'goapp/rating_detail.html', context)
+
