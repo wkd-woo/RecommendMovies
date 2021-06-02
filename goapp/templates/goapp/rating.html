@@ -46,8 +46,15 @@
 
     </style>
 
+    {# a 태그 스타일 #}
+    <style type="text/css">
+     a:link { color: inherit; text-decoration: none;}
+     a:visited { color: inherit; text-decoration: none;}
+     a:hover { color: #EB5E0F; text-decoration: none; text-shadow: 0 0 24px;}
+    </style>
+
     <!--div 부트스트랩 container 클래스를 사용하면 자바스크립트 파일(도 container 때문)과 충돌발생-->
-    <div>
+    <div class="head-con">
         <h2>영화를 평가해주세요!</h2>
         <br>
     </div>
@@ -58,19 +65,13 @@
 
             <div class="{{ movie.movieId }}">
                 <br>
-                <!--영화 포스터-->
-                {% if movie.imgurl != Null %}
-                    <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}"></img>
-                {% else %}
-                    <p style="text-align: center">
-                    No Img
-                    </p>
-                {% endif %}
+                <!--영화 포스터 onerror 이벤트 사용으로 이미지가 깨지거나 없으면 디폴트 이미지로 설정-->
+                    <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}" onerror="this.src='{% static 'images/noimg.png' %}'">
                 <!--영화 타이틀-->
                 <a href="{% url 'goapp:rating_detail' movie.movieId %}">
-                    <p style="text-align: center">
+                    <div style="text-align: center">
                     {{ movie.title }}
-                    </p>
+                    </div>
                 </a>
                 <!--영화 별점-->
                 <div class="star_rating text-center">
