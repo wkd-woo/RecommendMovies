@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import HttpResponse, render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from analysisapp.forms import ResultsCreationForm
@@ -6,7 +6,7 @@ from analysisapp.predict import *
 from .models import Movie
 import csv
 import pandas as pd
-from analysisapp.models import Results
+from analysisapp.models import Rating
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -110,7 +110,33 @@ def rating_home(request):
     return render(request, 'goapp/rating.html', context)
 
 def rating_detail(request, movie_id):
-    movie = Movie.objects.get(movieId=movie_id)
+    movie = Movie.objects.get(movieId=movie_id) # movieId가 movie_id인 행을 movie에 가져옴
+    # rating = Rating.objects.get(movie_id=movie_id)
+
+    #================= POST 실행 오류 수정 ㅠㅠ
+    # Exception Type:	IntegrityError
+    # NOT NULL constraint failed: analysisapp_rating.user_id_id
+
+    if request.method == 'POST':    # POST 통신을 통해 데이터베이스에 내용 저장
+        try:
+            #   rating 모델을 불러와 rate값 저장 ======== 이미 저장되어 있는 경우
+            rating = Rating()
+            rating.rating = float(request.POST['ratinginput'])
+            # request.POST['~']는 POST form 태그 안에서 지정한 name='~' 즉 name이 ~인 태그 안에서 작성한 내용이 ratepost에 들어가게됨
+            ratingModel = Rating.objects.get(movie_id=movie_id)
+            ratingModel.rating = rating.rating
+            ratingModel.save()
+            return redirect('goapp:rating_detail/movie_id')
+        except:
+            try:
+                ratingModel = Rating.objects.get(movie_id = movie_id)
+            except Rating.DoesNotExist:
+                ratingModel = None
+            ratingModel = Rating(movie_id = movie_id, rating = float(request.POST['ratinginput']))
+            ratingModel.save()
+
+    #=================
+
     context = {
         'movie':movie
     }

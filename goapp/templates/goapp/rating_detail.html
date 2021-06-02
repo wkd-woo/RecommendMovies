@@ -12,14 +12,27 @@
             <!-- 영화 제목 -->
             <p class="h1 text-center">{{ movie.title }}</p>
             <br>
-            <!-- 별점 수정 필요-->
-            <div class="star_rating text-center">
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-                    <a href="#">★</a>
-            </div>
+
+            {% comment %}
+            먼저 input 태그로 받아보기 부터...
+            <!-- 별점-->
+            {# 만약 사용자가 이미 평가를 내렸다면 model에서 불러와야함 #}
+            <form class="rate-form" action="" method="POST">
+                {% csrf_token %}
+                    <button type="submit" class="fa fa-star fa-3x my-btn" name="rainginput"></button>
+                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
+                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
+                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
+                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
+            </form>
+            {% endcomment %}
+            <form method="POST" action="">
+                {% csrf_token %}
+                <p>별점</p>
+                <input type="text" name="ratinginput">
+                <input type="submit" value="별점 저장">
+            </form>
+            <br>
         </div>
     </div>
 </div>
