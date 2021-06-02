@@ -19,12 +19,6 @@ body{
     flex-direction: column;
 }
 
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-
 .brand-logo{
     display: flex;
     align-items: center;
@@ -55,6 +49,12 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 140px;
+}
+
+.head-con{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
 .title {

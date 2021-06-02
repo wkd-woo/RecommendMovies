@@ -51,14 +51,15 @@ class goRecommend():
 
         rsearch.fit(YOU[genre_cols], YOU['rating'])  # 장르 칼럼
 
-        rsearch.best_estimator_.alpha
+        #rsearch.best_estimator_.alpha
 
         intercept = rsearch.best_estimator_.intercept_
         coef = rsearch.best_estimator_.coef_
 
+        """
         you_profile = pd.DataFrame([intercept, *coef],  # 유저 profile 생성. 장르별 계수
                                    index=['intercept', *genre_cols], columns=['score'])
-
+        """
         predictions = rsearch.best_estimator_.predict(genres)
         genres['YOU'] = predictions
 

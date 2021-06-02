@@ -1,96 +1,164 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custiomtag %}   {# 커스텀태그 작성으로 리스트의 index의 값을 가져옴 #}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}"/>
     <script src="{% static 'js/owl.carousel.js' %}"></script>
     <script src="{% static 'js/owl.autoplay.js' %}"></script>
     <script src="{% static 'js/owl.navigation.js' %}"></script>
+
+    {% comment %}
+    a 태그 링크 밑줄/색상 변경
+    style 소스의 type = text를 제어하는 css로 한다.
+    a:link : 클릭하지 않은 링크
+    a:visited : 한번 클릭했던 혹은 다녀갔던 링크
+    a:hover : 링크를 클릭하려고 마우스를 가져갔을 때
+    decoration : 밑줄
+    none : 없는 상태
+    underline : 있는 상태
+
+    a:active : 링크부분에서 마우스를 누르고 있는 동안의 상태
+    {% endcomment %}
+    <style type="text/css">
+     a:link { color: inherit; text-decoration: none;}
+     a:visited { color: inherit; text-decoration: none;}
+     a:hover { color: #BC3A80; text-decoration: none; text-shadow: 0 0 24px;}
+    </style>
+
 <div class="container my-3">
     <ul class="nav">
         <li>
-            <h2>영화 추천</h2>
+            <h2 style="font-weight: bold">영화 추천</h2>
         </li>
-        <li><a href="{% url 'goapp:rating_home' %}">평가 하기</a></li>
+        <li><a href="{% url 'goapp:rating_home' %}" style="color: white!important;">평가 하기</a></li>
     </ul>
 </div>
     <div class="container my-3">
-        <div class="recommend bg-gray">
-            <!--1. 예상 별점이 높은 작품-->
-            <div class="object"><h3>예상 별점이 높은 작품</h3></div>
+        <!--1. 예상 별점이 높은 작품-->
+        <div class="recommend" style="background-color:#202027;border-radius: 1rem;">
+            <div class="object"><h3 style="color: #EB5E0F; font-weight: bold"><br>&nbsp # 예상 별점이 높은 작품<br></h3></div>
             <div class="owl-carousel owl-theme">
-            <div class="frame">
-                <!--for문 시작 12개까지 -->
-                <!--순서-->
-                <div class="item"><h4>1</h4></div>
-                <!--포스터-->
-                <div class="img">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@..jpg"
-                         alt="1">
+            {% for i in Mlist %}
+                <div class="frame">
+                    {# 캐러셀 순서, 포스터, 영화 제목을 클릭하면 상세 페이지로 이동 #}
+                    <a href="{% url 'goapp:rating_detail' i.movieId %}">
+                        <!--순서-->
+                        <div class="item"><h4>{{ forloop.counter }}</h4></div>
+                        <!--포스터-->
+                        <div class="img">
+                                <img src="{{ i.imgurl }}" alt="{{ i.movieId }}" onerror="this.src='{% static 'images/noimg.png' %}'">
+                        </div>
+                        <!--영화 제목-->
+                        <div class="movietitle text-center">
+                            <br>
+                            <p>{{ i.title }}</p>
+                        </div>
+                    </a>
+                    <!--영화 평점-->
+                    <div class="movierating text-center">
+                        <p class="star_rating_string">
+                            ★ {{ Mstar|index:forloop.counter0 }}점
+                        </p>
+                    </div>
                 </div>
-                <!--영화 제목-->
-                <div class="movietitle text-center">
-                    <br>
-                    <p>title</p>
-                </div>
-                <!--영화 평점-->
-                <div class="movierating text-center">
-                    <p class="star_rating_string">
-                        ★점
-                    </p>
-                </div>
-            </div>
-            <div class="item"><h4>2</h4></div>
-            <div class="item"><h4>3</h4></div>
-            <div class="item"><h4>4</h4></div>
-            <div class="item"><h4>5</h4></div>
-            <div class="item"><h4>6</h4></div>
-            <div class="item"><h4>7</h4></div>
-            <div class="item"><h4>8</h4></div>
-            <div class="item"><h4>9</h4></div>
-            <div class="item"><h4>10</h4></div>
-            <div class="item"><h4>11</h4></div>
-            <div class="item"><h4>12</h4></div>
+            {% endfor %}
             </div>
         </div>
+
         <br>
         <!--2. 로맨스 장르-->
-        <div class="romance">
-            <div class="object"><h3>로맨스</h3></div>
+        <div class="romance" style="background-color:#202027;border-radius: 1rem;">
+            <div class="object"><h3 style="color: #EB5E0F; font-weight: bold"><br>&nbsp # Romance<br></h3></div>
             <div class="owl-carousel owl-theme">
-            <div class="frame">
-                <!--for문 시작 12개까지 -->
-                <!--순서-->
-                <div class="item"><h4>1</h4></div>
-                <!--포스터-->
-                <div class="img">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMzk2OTg4MTk1NF5BMl5BanBnXkFtZTcwNjExNTgzNA@@..jpg"
-                         alt="2">
+            {% for i in Rlist %}
+                <div class="frame">
+                    {# 캐러셀 순서, 포스터, 영화 제목을 클릭하면 상세 페이지로 이동 #}
+                    <a href="{% url 'goapp:rating_detail' i.movieId %}">
+                    <!--순서-->
+                    <div class="item"><h4>{{ forloop.counter }}</h4></div>
+                    <!--포스터-->
+                    <div class="img">
+                        <img src="{{ i.imgurl }}" alt="{{ i.movieId }}" onerror="this.src='{% static 'images/noimg.png' %}'">
+                    </div>
+                    <!--영화 제목-->
+                    <div class="movietitle text-center">
+                        <br>
+                        <p>{{ i.title }}</p>
+                    </div>
+                    </a>
+                    <!--영화 평점-->
+                    <div class="movierating text-center">
+                        <p class="star_rating_string">
+                            ★ {{ Rstar|index:forloop.counter0 }}점
+                        </p>
+                    </div>
                 </div>
-                <!--영화 제목-->
-                <div class="movietitle text-center">
-                    <br>
-                    <p>title</p>
-                </div>
-                <!--영화 평점-->
-                <div class="movierating text-center">
-                    <p class="star_rating_string">
-                        ★점
-                    </p>
-                </div>
+            {% endfor %}
             </div>
+        </div>
 
-            <div class="item"><h4>2</h4></div>
-            <div class="item"><h4>3</h4></div>
-            <div class="item"><h4>4</h4></div>
-            <div class="item"><h4>5</h4></div>
-            <div class="item"><h4>6</h4></div>
-            <div class="item"><h4>7</h4></div>
-            <div class="item"><h4>8</h4></div>
-            <div class="item"><h4>9</h4></div>
-            <div class="item"><h4>10</h4></div>
-            <div class="item"><h4>11</h4></div>
-            <div class="item"><h4>12</h4></div>
+        <br>
+        <!--3. 액션 장르-->
+        <div class="actionmovie" style="background-color:#202027;border-radius: 1rem;">
+            <div class="object"><h3 style="color: #EB5E0F; font-weight: bold"><br>&nbsp # Action<br></h3></div>
+            <div class="owl-carousel owl-theme">
+            {% for i in Alist %}
+                <div class="frame">
+                    {# 캐러셀 순서, 포스터, 영화 제목을 클릭하면 상세 페이지로 이동 #}
+                    <a href="{% url 'goapp:rating_detail' i.movieId %}">
+                    <!--순서-->
+                    <div class="item"><h4>{{ forloop.counter }}</h4></div>
+                    <!--포스터-->
+                    <div class="img">
+                        <img src="{{ i.imgurl }}" alt="{{ i.movieId }}" onerror="this.src='{% static 'images/noimg.png' %}'">
+                    </div>
+                    <!--영화 제목-->
+                    <div class="movietitle text-center">
+                        <br>
+                        <p>{{ i.title }}</p>
+                    </div>
+                    </a>
+                    <!--영화 평점-->
+                    <div class="movierating text-center">
+                        <p class="star_rating_string">
+                            ★ {{ Astar|index:forloop.counter0 }}점
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <br>
+        <!--4. 예상 별점이 낮은 작품-->
+        <div class="worst" style="background-color:#202027;border-radius: 1rem;">
+            <div class="object"><h3 style="color: #EB5E0F; font-weight: bold"><br>&nbsp # 예상 별점이 낮은 작품<br></h3></div>
+            <div class="owl-carousel owl-theme">
+            {% for i in Wlist %}
+                <div class="frame">
+                    {# 캐러셀 순서, 포스터, 영화 제목을 클릭하면 상세 페이지로 이동 #}
+                    <a href="{% url 'goapp:rating_detail' i.movieId %}">
+                    <!--순서-->
+                    <div class="item"><h4>{{ forloop.counter }}</h4></div>
+                    <!--포스터-->
+                    <div class="img">
+                        <img src="{{ i.imgurl }}" alt="{{ i.movieId }}" onerror="this.src='{% static 'images/noimg.png' %}'">
+                    </div>
+                    <!--영화 제목-->
+                    <div class="movietitle text-center">
+                        <br>
+                        <p>{{ i.title }}</p>
+                    </div>
+                    </a>
+                    <!--영화 평점-->
+                    <div class="movierating text-center">
+                        <p class="star_rating_string">
+                            ★ {{ Wstar|index:forloop.counter0 }}점
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
             </div>
         </div>
     </div>
