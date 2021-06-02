@@ -5,3 +5,4 @@ class AccountUpdateForm(UserCreationForm):
         super().__init__(*args, **kwargs)
 
         self.fields['username'].disabled = True
+
