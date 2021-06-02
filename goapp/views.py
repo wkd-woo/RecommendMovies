@@ -23,7 +23,48 @@ def recommend(request):
     Action = genreThatYouLike(PredictDataFrame, 1003, 1)
     Romance = genreThatYouLike(PredictDataFrame, 1003, 15)
 
+    Mlist = []
+    Mstar = []
+    Wlist = []
+    Wstar = []
+    Alist = []
+    Astar = []
+    Rlist = []
+    Rstar = []
+    for id, star in Top12.items():
+        Mlist.append(Movie.objects.get(movieId=id))
+        Mstar.append(star)
+
+    for id, star in Worst12.items():
+        Wlist.append(Movie.objects.get(movieId=id))
+        Wstar.append(star)
+
+    for id, star in Action.items():
+        Alist.append(Movie.objects.get(movieId=id))
+        Astar.append(star)
+
+    for id, star in Romance.items():
+        Rlist.append(Movie.objects.get(movieId=id))
+        Rstar.append(star)
+
+    #=======> 효율적으로 만드는 방법이 없을까
+    """
+    def getModel(dic):
+        for id, star in dic.items():
+            dic.append(Movie.objects.get(movieId=id))
+            dic.append(star)
+    """
+    #========<
+
     context = {
+        'Mlist':Mlist,
+        'Mstar':Mstar,
+        'Wlist':Wlist,
+        'Wstar':Wstar,
+        'Alist':Alist,
+        'Astar':Astar,
+        'Rlist':Rlist,
+        'Rstar':Rstar
     }
     return render(request, 'goapp/recommend.html', context)
 

@@ -5,7 +5,7 @@
     <div class="row">
         <!-- 영화 포스터 -->
         <div class="col">
-            <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}" class="img-fluid" alt="cinema" width="600" height="600">
+            <img src="{{ movie.imgurl }}" alt="{{ movie.movieId }}" class="img-fluid" alt="cinema" onerror="this.src='{% static 'images/noimg.png' %}'" width="600" height="600">
         </div>
         <div class="col">
             <br>
