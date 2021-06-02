@@ -12,16 +12,18 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 
+class recommendResultObject():
+    objects = goRecommend()
+    PredictDataFrame = objects.Predict(1001)  # userId로 변경가능!!!!
+
+    Top12 = guessYouLikeIt(PredictDataFrame, 1001)
+    Worst12 = guessYouHateIt(PredictDataFrame, 1001)
+    Action = genreThatYouLike(PredictDataFrame, 1001, 1)
+    Romance = genreThatYouLike(PredictDataFrame, 1001, 15)
 
 
 def recommend(request):
-    objects = goRecommend()
-    PredictDataFrame = objects.Predict(1003)    # userId로 변경가능!!!!
-
-    Top12 = guessYouLikeIt(PredictDataFrame, 1003)
-    Worst12 = guessYouHateIt(PredictDataFrame, 1003)
-    Action = genreThatYouLike(PredictDataFrame, 1003, 1)
-    Romance = genreThatYouLike(PredictDataFrame, 1003, 15)
+    result = recommendResultObject
 
     Mlist = []
     Mstar = []
@@ -31,19 +33,19 @@ def recommend(request):
     Astar = []
     Rlist = []
     Rstar = []
-    for id, star in Top12.items():
+    for id, star in result.Top12.items():
         Mlist.append(Movie.objects.get(movieId=id))
         Mstar.append(star)
 
-    for id, star in Worst12.items():
+    for id, star in result.Worst12.items():
         Wlist.append(Movie.objects.get(movieId=id))
         Wstar.append(star)
 
-    for id, star in Action.items():
+    for id, star in result.Action.items():
         Alist.append(Movie.objects.get(movieId=id))
         Astar.append(star)
 
-    for id, star in Romance.items():
+    for id, star in result.Romance.items():
         Rlist.append(Movie.objects.get(movieId=id))
         Rstar.append(star)
 
