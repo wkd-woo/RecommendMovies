@@ -16,7 +16,7 @@ from django.core.paginator import Paginator
 
 def recommend(request):
     objects = goRecommend()
-    PredictDataFrame = objects.Predict(1003) # userId로 변경가능!!!!
+    PredictDataFrame = objects.Predict(1003)    # userId로 변경가능!!!!
 
     Top12 = guessYouLikeIt(PredictDataFrame, 1003)
     Worst12 = guessYouHateIt(PredictDataFrame, 1003)
@@ -60,7 +60,7 @@ def rating_home(request):
     movie_list = Movie.objects.all()[1:]
 
     # 페이징처리
-    paginator = Paginator(movie_list, 30)  # 페이지당 10개씩 보여주기
+    paginator = Paginator(movie_list, 30)  # 페이지당 30개씩 보여주기
     page_obj = paginator.get_page(page)
     context = {
         'movie_list': page_obj
