@@ -14,12 +14,12 @@ from django.core.paginator import Paginator
 
 class recommendResultObject():
     objects = goRecommend()
-    PredictDataFrame = objects.Predict(1001)  # userId로 변경가능!!!!
+    PredictDataFrame = objects.Predict(1003)  # userId로 변경가능!!!!
 
-    Top12 = guessYouLikeIt(PredictDataFrame, 1001)
-    Worst12 = guessYouHateIt(PredictDataFrame, 1001)
-    Action = genreThatYouLike(PredictDataFrame, 1001, 1)
-    Romance = genreThatYouLike(PredictDataFrame, 1001, 15)
+    Top12 = guessYouLikeIt(PredictDataFrame, 1003)
+    Worst12 = guessYouHateIt(PredictDataFrame, 1003)
+    Action = genreThatYouLike(PredictDataFrame, 1003, 1)
+    Romance = genreThatYouLike(PredictDataFrame, 1003, 15)
 
 
 def recommend(request):
@@ -123,19 +123,32 @@ def rating_detail(request, movie_id):
         try:
             #   rating 모델을 불러와 rate값 저장 ======== 이미 저장되어 있는 경우
             rating = Rating()
+            """
+            왜 try - except로 작성했을까? - 물어봤음 답변 대기
+            https://wayhome25.github.io/django/2017/04/01/django-ep9-crud/
+            확인해서 해보자
+            csv에 넣으나 db에 넣으나 orm에 넣으나 상관없다
+            210604 17:43 지금의 생각
+            1. db에 userId movieId 같은거 있는지 조회해서 확인
+            2-1. 없다면 create import 
+            2-2. 있다면 show
+            """
             rating.rating = float(request.POST['ratinginput'])
             # request.POST['~']는 POST form 태그 안에서 지정한 name='~' 즉 name이 ~인 태그 안에서 작성한 내용이 ratepost에 들어가게됨
-            ratingModel = Rating.objects.get(movie_id=movie_id)
-            ratingModel.rating = rating.rating
-            ratingModel.save()
+            rating_instance = Rating.objects.get(movie_id=movie_id)
+            rating_instance.rating = rating.rating
+            rating_instance.save()
             return redirect('goapp:rating_detail/movie_id')
         except:
             try:
-                ratingModel = Rating.objects.get(movie_id = movie_id)
+                rating_instance = Rating.objects.get(movie_id = movie_id)
+                """
+                ??? rating_instance를 어디다가 쓰지?
+                """
             except Rating.DoesNotExist:
-                ratingModel = None
-            ratingModel = Rating(movie_id = movie_id, rating = float(request.POST['ratinginput']))
-            ratingModel.save()
+                rating_instance = None
+            rating_instance = Rating(movie_id = movie_id, rating = float(request.POST['ratinginput']))
+            rating_instance.save()
 
     #=================
 
