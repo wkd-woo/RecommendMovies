@@ -56,10 +56,27 @@
     <!--div 부트스트랩 container 클래스를 사용하면 자바스크립트 파일(도 container 때문)과 충돌발생-->
     <div class="head-con">
         <h2>영화를 평가해주세요!</h2>
+        <form action="" method='GET'>
+            <div class="row" style="margin-bottom:15px;">
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search_key" value="{{ search_key }}"
+                            placeholder="영화 제목을 입력해주세요.">
+                        <span class="input-group-btn">
+                            <input class="btn btn-default" type="submit" value="Search">
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </form>
         <br>
     </div>
+    {# 영화 검색 #}
+
     <!--영화 리스트-->
     <div class="container">
+        {# movie_list가 존재한다면 #}
+        {% if movie_list %}
         <!--영화 정보 모델에서 for문을 통해 div 생성해 로드-->
         {% for movie in movie_list %}
 
@@ -88,6 +105,22 @@
 
         {% endfor %}
         <!--영화 for문 끝-->
+        {% else %}
+            {# 영화 쿼리셋이 존재하지 않을 때 #}
+            {% if search_key %} {# 검색어가 존재하지만 검색 결과가 없는 경우 #}
+                <div class="container">
+                    <span>
+                        일치하는 영화가 없습니다.
+                    </span>
+                </div>
+            {% else %}  {# movie_list가 존재하지 않는 경우 #}
+                <div class="container">
+                    <span>
+                        영화 데이터가 없습니다.
+                    </span>
+                </div>
+            {% endif %}
+        {% endif %}
     </div>
 
     <br>
@@ -97,7 +130,7 @@
         <!-- 이전페이지 -->
         {% if movie_list.has_previous %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ movie_list.previous_page_number }}">이전</a>
+            <a class="page-link" href="?page={{ movie_list.previous_page_number }}&search_key={{ search_key }}">이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -109,11 +142,11 @@
             {% if page_number >= movie_list.number|add:-5 and page_number <= movie_list.number|add:5 %}
                 {% if page_number == movie_list.number %}
                 <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    <a class="page-link" href="?page={{ page_number }}&search_key={{ search_key }}">{{ page_number }}</a>
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    <a class="page-link" href="?page={{ page_number }}&search_key={{ search_key }}">{{ page_number }}</a>
                 </li>
                 {% endif %}
             {% endif %}
@@ -121,7 +154,7 @@
         <!-- 다음페이지 -->
         {% if movie_list.has_next %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ movie_list.next_page_number }}">다음</a>
+            <a class="page-link" href="?page={{ movie_list.next_page_number }}&search_key={{ search_key }}">다음</a>
         </li>
         {% else %}
         <li class="page-item disabled">
