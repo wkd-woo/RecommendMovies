@@ -14,12 +14,12 @@ from django.core.paginator import Paginator
 
 class recommendResultObject():
     objects = goRecommend()
-    PredictDataFrame = objects.Predict(1001)  # userId로 변경가능!!!!
+    PredictDataFrame = objects.Predict(1003)  # userId로 변경가능!!!!
 
-    Top12 = guessYouLikeIt(PredictDataFrame, 1001)
-    Worst12 = guessYouHateIt(PredictDataFrame, 1001)
-    Action = genreThatYouLike(PredictDataFrame, 1001, 1)
-    Romance = genreThatYouLike(PredictDataFrame, 1001, 15)
+    Top12 = guessYouLikeIt(PredictDataFrame, 1003)
+    Worst12 = guessYouHateIt(PredictDataFrame, 1003)
+    Action = genreThatYouLike(PredictDataFrame, 1003, 1)
+    Romance = genreThatYouLike(PredictDataFrame, 1003, 15)
 
 
 def recommend(request):
@@ -102,11 +102,18 @@ def rating_home(request):
     # 조회
     movie_list = Movie.objects.all()[1:]
 
+    # 검색어 가져오기
+    search_key = request.GET.get('search_key')
+    if search_key:
+        movie_list = Movie.objects.all().filter(title__icontains=search_key) # 해당 검색어를 포함한 queryset 가져오기
+
     # 페이징처리
     paginator = Paginator(movie_list, 30)  # 페이지당 30개씩 보여주기
     page_obj = paginator.get_page(page)
+    print(page_obj)
     context = {
-        'movie_list': page_obj
+        'movie_list': page_obj,
+        'search_key': search_key
     }
     # 저장된 모든 영화 불러오기
     return render(request, 'goapp/rating.html', context)
