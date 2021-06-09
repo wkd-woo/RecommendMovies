@@ -25,6 +25,14 @@ ratings = pd.read_sql(query, connToRating)
 ratings = pd.read_csv('analysisapp/data/ratings.csv')
 my_ratings = pd.read_csv('analysisapp/data/my_ratings_input.csv')
 movies = pd.read_csv('analysisapp/data/movies.csv')
+
+#====Latent Factor data=========================================#
+
+latent_ratings = pd.read_csv('analysisapp/data/ratings_100k.csv')
+latent_movies = pd.read_csv('analysisapp/data/movies_100k.csv')
+
+#=================================================#
+
 with open('analysisapp/data/genres.p', 'rb') as f:
     genres = pickle.load(f)
 genres = pd.read_pickle('analysisapp/data/genres.p')
@@ -74,6 +82,9 @@ class YourProfile():
         YOU = my_ratings[my_ratings['userId'] == 1003]  # 유저 설정
         YourDistribution = YOU['rating'].hist()  # 평점 분포 히스토그램 : 프론트에서 graph를 보여주려면? -> 찾아보기. 이후 profile 적용 !
         return
+
+
+class goRecommendByLatentFactor():
 
 
 
