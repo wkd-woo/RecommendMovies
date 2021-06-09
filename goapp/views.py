@@ -35,19 +35,19 @@ def recommend(request):
     Rstar = []
     for id, star in result.Top12.items():
         Mlist.append(Movie.objects.get(movieId=id))
-        Mstar.append(star)
+        Mstar.append(round(star, 2))    # 소수점 두 번째 까지
 
     for id, star in result.Worst12.items():
         Wlist.append(Movie.objects.get(movieId=id))
-        Wstar.append(star)
+        Wstar.append(round(star, 2))
 
     for id, star in result.Action.items():
         Alist.append(Movie.objects.get(movieId=id))
-        Astar.append(star)
+        Astar.append(round(star, 2))
 
     for id, star in result.Romance.items():
         Rlist.append(Movie.objects.get(movieId=id))
-        Rstar.append(star)
+        Rstar.append(round(star, 2))
 
     #=======> 효율적으로 만드는 방법이 없을까
     """
@@ -118,9 +118,20 @@ def rating_home(request):
     # 저장된 모든 영화 불러오기
     return render(request, 'goapp/rating.html', context)
 
-def rating_detail(request, movie_id):
-    movie = Movie.objects.get(movieId=movie_id) # movieId가 movie_id인 행을 movie에 가져옴
-    # rating = Rating.objects.get(movie_id=movie_id)
+def rating_detail(request, movie_Id):
+    movie = Movie.objects.get(movieId=movie_Id) # movieId가 movie_id인 행을 movie에 가져옴
+
+    if request.method == 'POST':
+        star = request.POST['star']
+        print(star)
+        try:
+            ratingM = Rating.objects.get(movie_id=movie_Id)
+            ratingM.rating = star
+            ratingM.save()
+        except:
+            ratingM = Rating(movie_id=movie_Id, rating=star)
+            ratingM.save()
+    """# rating = Rating.objects.get(movie_id=movie_id)
 
     #================= POST 실행 오류 수정 ㅠㅠ
     # Exception Type:	IntegrityError
@@ -144,7 +155,9 @@ def rating_detail(request, movie_id):
             ratingModel = Rating(movie_id = movie_id, rating = float(request.POST['ratinginput']))
             ratingModel.save()
 
-    #=================
+    #================="""
+
+
 
     context = {
         'movie':movie
