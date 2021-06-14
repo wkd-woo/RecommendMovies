@@ -18,25 +18,11 @@
             <!-- 영화 제목 -->
             <p class="h1 text-center">{{ movie.title }}</p>
             <br>
-
-            {% comment %}
-            먼저 input 태그로 받아보기 부터...
-            <!-- 별점-->
-            {# 만약 사용자가 이미 평가를 내렸다면 model에서 불러와야함 #}
-            <form class="rate-form" action="" method="POST">
+            {# 영화 평점/코멘트 받기 #}
+            <form method="POST" action="{% url 'goapp:rating_detail' movie.movieId %}">
                 {% csrf_token %}
-                    <button type="submit" class="fa fa-star fa-3x my-btn" name="rainginput"></button>
-                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
-                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
-                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
-                    <button type="submit" class="fa fa-star fa-3x my-btn" ></button>
-            </form>
-            {% endcomment %}
-            <form method="POST" action="">
-                {% csrf_token %}
-                <p>별점</p>
-                <input type="text" name="star">
-                <input type="submit" value="별점 저장">
+                {{ form.as_p }}
+                <input type="submit" value="Save">
             </form>
             <br>
         </div>
