@@ -8,6 +8,7 @@ import csv
 import pandas as pd
 from analysisapp.models import Rating
 from django.core.paginator import Paginator
+from .froms import RatingForm
 
 # Create your views here.
 
@@ -35,19 +36,19 @@ def recommend(request):
     Rstar = []
     for id, star in result.Top12.items():
         Mlist.append(Movie.objects.get(movieId=id))
-        Mstar.append(star)
+        Mstar.append(round(star, 2))    # 소수점 두 번째 까지
 
     for id, star in result.Worst12.items():
         Wlist.append(Movie.objects.get(movieId=id))
-        Wstar.append(star)
+        Wstar.append(round(star, 2))
 
     for id, star in result.Action.items():
         Alist.append(Movie.objects.get(movieId=id))
-        Astar.append(star)
+        Astar.append(round(star, 2))
 
     for id, star in result.Romance.items():
         Rlist.append(Movie.objects.get(movieId=id))
-        Rstar.append(star)
+        Rstar.append(round(star, 2))
 
     #=======> 효율적으로 만드는 방법이 없을까
     """
@@ -118,36 +119,19 @@ def rating_home(request):
     # 저장된 모든 영화 불러오기
     return render(request, 'goapp/rating.html', context)
 
-def rating_detail(request, movie_id):
-    movie = Movie.objects.get(movieId=movie_id) # movieId가 movie_id인 행을 movie에 가져옴
-    # rating = Rating.objects.get(movie_id=movie_id)
-
-    #================= POST 실행 오류 수정 ㅠㅠ
-    # Exception Type:	IntegrityError
-    # NOT NULL constraint failed: analysisapp_rating.user_id_id
-
-    if request.method == 'POST':    # POST 통신을 통해 데이터베이스에 내용 저장
-        try:
-            #   rating 모델을 불러와 rate값 저장 ======== 이미 저장되어 있는 경우
-            rating = Rating()
-            rating.rating = float(request.POST['ratinginput'])
-            # request.POST['~']는 POST form 태그 안에서 지정한 name='~' 즉 name이 ~인 태그 안에서 작성한 내용이 ratepost에 들어가게됨
-            ratingModel = Rating.objects.get(movie_id=movie_id)
-            ratingModel.rating = rating.rating
-            ratingModel.save()
-            return redirect('goapp:rating_detail/movie_id')
-        except:
-            try:
-                ratingModel = Rating.objects.get(movie_id = movie_id)
-            except Rating.DoesNotExist:
-                ratingModel = None
-            ratingModel = Rating(movie_id = movie_id, rating = float(request.POST['ratinginput']))
-            ratingModel.save()
-
-    #=================
+def rating_detail(request, movie_Id):
+    movie = Movie.objects.get(movieId=movie_Id) # movieId가 movie_id인 행을 movie에 가져옴
+    form = RatingForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        if form.is_valid():
+            ratingM = form.save(commit=False)
+            ratingM.user_id = request.user
+            ratingM.movie_id = movie_Id
+            form.save()
 
     context = {
-        'movie':movie
+        'movie':movie,
+        'form':form
     }
     return render(request, 'goapp/rating_detail.html', context)
 
